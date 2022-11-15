@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* No dragging, highlighting, or tap zooming */
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  touch-action: manipulation;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Chakra Petch", sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  color: hsl(0, 0%, 100%);
+  /* Blueprint BG */
+  background-color: rgb(70, 70, 70);
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.2) 2px,
+      transparent 2px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+.target {
+  border-radius: 100%;
+  box-shadow: 10px 10px 16px -4px hsla(0, 0%, 0%, 0.2);
+}
+
+.stats {
+  /* border: 1px solid firebrick; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  min-width: 170px;
+  display: flex;
+  gap: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.range-slider {
+  width: 120px;
+}
