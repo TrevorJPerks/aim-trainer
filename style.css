@@ -10,6 +10,8 @@
   -ms-user-select: none;
   touch-action: manipulation;
   overflow: hidden;
+  /* iOS vieport fix */
+  min-height: -webkit-fill-available;
 }
 
 body {
