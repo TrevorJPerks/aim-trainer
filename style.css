@@ -42,7 +42,10 @@ main {
 }
 
 .stats {
-  /* border: 1px solid firebrick; */
+  background-color: hsla(0, 0%, 0%, 0.4);
+  border-radius: 5%;
+  margin: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
