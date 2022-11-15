@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap"
+      rel="stylesheet"
+    />
+    <title>Aim Trainer</title>
+  </head>
+  <body>
+    <!-- Game Viewport -->
+    <main class="game-container">
+      <img
+        draggable="false"
+        class="target"
+        src="images/cdnlogo.com_target.svg"
+        alt=""
+      />
+
+      <div class="stats">
+        <p class="hits">Hits: 0</p>
+        <p class="accuracy">Accuracy: 0%</p>
+        <div class="options">
+          <label>Target Size:</label>
+          <p class="slider-value">50</p>
+          <input
+            class="range-slider"
+            type="range"
+            name="slider"
+            id="rangeSlider"
+            min="50"
+            max="150"
+            step="25"
+            value="75"
+          />
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
