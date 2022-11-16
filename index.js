@@ -7,7 +7,7 @@ let hits = 0;
 let shots = 0;
 
 rangeSlider.onchange = () => {
-  newGame(rangeSlider.value, trainShortFlicks);
+  newGame(rangeSlider.value, trainAim);
 };
 
 rangeSlider.oninput = () => {
@@ -15,11 +15,13 @@ rangeSlider.oninput = () => {
 };
 
 gameSpace.addEventListener("mousedown", (e) => {
-  if (e.target.classList.contains("range-slider")) {
-    return;
+  if (
+    e.target.classList.contains("game-container") ||
+    e.target.classList.contains("target")
+  ) {
+    shots++;
+    updateAccuracy();
   }
-  shots++;
-  updateAccuracy();
 });
 
 function drawTarget(size, gamemode) {
@@ -120,5 +122,5 @@ function newGame(size, gamemode) {
 }
 
 window.onload = () => {
-  newGame(rangeSlider.value, trainShortFlicks);
+  newGame(rangeSlider.value, trainAim);
 };
