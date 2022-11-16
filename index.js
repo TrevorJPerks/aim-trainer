@@ -7,7 +7,7 @@ let hits = 0;
 let shots = 0;
 
 rangeSlider.onchange = () => {
-  newGame();
+  newGame(rangeSlider.value, killTarget);
 };
 
 rangeSlider.oninput = () => {
@@ -22,33 +22,40 @@ gameSpace.addEventListener("mousedown", (e) => {
   updateAccuracy();
 });
 
+function drawTarget(size, gamemode) {
+  // Target Size
+  target.style.width = `${size}px`;
+  target.style.height = `${size}px`;
+  // Target Starting Location
+  target.style.top = "50vh";
+  target.style.left = "50vw";
+
+  target.addEventListener("mousedown", gamemode);
+}
+
 function getRandomAxis(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-function drawTarget(size) {
+function RandomizeTargetLocation() {
+  // Viewport size minus Target size
   const maximumY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
   const maximumX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
 
+  // Min value keeps the target from overlapping the side bar
+  // Max value keeps the target from going off screen
   const randomY = getRandomAxis(170, maximumY);
   const randomX = getRandomAxis(170, maximumX);
 
-  // Target Location
-  target.style.position = "absolute";
+  // Random Target Location
   target.style.top = `${randomY}px`;
   target.style.left = `${randomX}px`;
-  // target.style.top = `${randomY}vh`;
-  // target.style.left = `${randomX}vw`;
-  // Target Size
-  target.style.width = `${size}px`;
-  target.style.height = `${size}px`;
-
-  target.addEventListener("mousedown", killTarget);
 }
 
 function killTarget() {
   hits++;
   drawTarget();
+  RandomizeTargetLocation();
   updateHits();
   updateAccuracy();
 }
@@ -75,8 +82,8 @@ function updateAccuracy() {
   accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
 }
 
-function newGame() {
-  drawTarget(rangeSlider.value);
+function newGame(size, gamemode) {
+  drawTarget(size, gamemode);
   hits = 0;
   shots = 0;
   updateHits();
@@ -85,5 +92,5 @@ function newGame() {
 }
 
 window.onload = () => {
-  newGame();
+  newGame(rangeSlider.value, killTarget);
 };
