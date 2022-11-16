@@ -66,6 +66,13 @@ main {
   text-align: center;
 }
 
+.gamemodes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 16px;
+}
+
 .range-slider {
   width: 120px;
 }
