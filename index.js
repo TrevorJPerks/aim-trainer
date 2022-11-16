@@ -4,6 +4,7 @@ const rangeSlider = document.querySelector(".range-slider");
 const target = document.querySelector(".target");
 
 let hits = 0;
+let misses = 0;
 let shots = 0;
 
 rangeSlider.onchange = () => {
@@ -21,6 +22,10 @@ gameSpace.addEventListener("mousedown", (e) => {
   ) {
     shots++;
     updateAccuracy();
+  }
+  if (!e.target.classList.contains("target")) {
+    misses++;
+    updateMisses();
   }
 });
 
@@ -95,6 +100,11 @@ function updateHits() {
   hitsDisplay.textContent = `Hits: ${hits}`;
 }
 
+function updateMisses() {
+  const missesDisplay = document.querySelector(".misses");
+  missesDisplay.textContent = `Misses: ${misses}`;
+}
+
 function updateAccuracy() {
   const accuracyDisplay = document.querySelector(".accuracy");
   let accuracy = Math.round((hits / shots) * 100 * 10) / 10;
@@ -115,8 +125,10 @@ function updateAccuracy() {
 function newGame(size, gamemode) {
   drawTarget(size, gamemode);
   hits = 0;
+  misses = 0;
   shots = 0;
   updateHits();
+  updateMisses();
   updateAccuracy();
   document.querySelector(".slider-value").innerHTML = rangeSlider.value;
 }
