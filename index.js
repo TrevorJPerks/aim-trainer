@@ -27,13 +27,18 @@ function getRandomAxis(min, max) {
 }
 
 function drawTarget(size) {
-  const randomY = getRandomAxis(1, 90);
-  const randomX = getRandomAxis(6, 90);
+  const maximumY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
+  const maximumX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
+
+  const randomY = getRandomAxis(170, maximumY);
+  const randomX = getRandomAxis(170, maximumX);
 
   // Target Location
   target.style.position = "absolute";
-  target.style.top = `${randomY}vh`;
-  target.style.left = `${randomX}vw`;
+  target.style.top = `${randomY}px`;
+  target.style.left = `${randomX}px`;
+  // target.style.top = `${randomY}vh`;
+  // target.style.left = `${randomX}vw`;
   // Target Size
   target.style.width = `${size}px`;
   target.style.height = `${size}px`;
