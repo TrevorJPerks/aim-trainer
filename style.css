@@ -45,8 +45,7 @@ main {
 
 .stats {
   background-color: hsla(0, 0%, 0%, 0.4);
-  border-radius: 5%;
-  margin: 10px;
+
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -54,7 +53,9 @@ main {
   align-items: center;
   text-align: center;
   min-width: 170px;
-  display: flex;
+  height: 100vh;
+  /* iOS vieport fix */
+  min-height: -webkit-fill-available;
   gap: 10px;
 }
 
