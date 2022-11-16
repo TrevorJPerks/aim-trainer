@@ -7,7 +7,7 @@ let hits = 0;
 let shots = 0;
 
 rangeSlider.onchange = () => {
-  newGame(rangeSlider.value, trainShortFlicks);
+  newGame(rangeSlider.value, trainAim);
 };
 
 rangeSlider.oninput = () => {
@@ -37,9 +37,9 @@ function getRandomAxis(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-function RandomizeTargetLocation(minY, minX, maxYValue, maxXValue) {
-  const randomY = getRandomAxis(minY, maxYValue);
-  const randomX = getRandomAxis(minX, maxXValue);
+function RandomizeTargetLocation(minY, maxY, minX, maxX) {
+  const randomY = getRandomAxis(minY, maxY);
+  const randomX = getRandomAxis(minX, maxX);
 
   // Random Target Location
   target.style.top = `${randomY}px`;
@@ -49,11 +49,11 @@ function RandomizeTargetLocation(minY, minX, maxYValue, maxXValue) {
 // Gammode 1
 function trainAim() {
   // Viewport size minus Target size
-  const maximumX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
-  const maximumY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
+  const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
+  const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
   hits++;
   drawTarget();
-  RandomizeTargetLocation(170, 170, maximumY, maximumX);
+  RandomizeTargetLocation(170, maxY, 170, maxX);
   updateHits();
   updateAccuracy();
 }
@@ -63,16 +63,17 @@ let midNext = 0;
 // Gamemode 2
 function trainShortFlicks() {
   // Viewport size
-  const minimumY =
+  const minY =
     target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
-  const minimumX =
-    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.4;
-
-  const maximumY =
+  const maxY =
     target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.4;
-  const maximumX =
+
+  const minX =
+    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.4;
+  const maxX =
     target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
-  if (midNext === 1) {
+
+  if (midNext) {
     hits++;
     drawTarget();
     midNext = 0;
@@ -81,13 +82,10 @@ function trainShortFlicks() {
   } else {
     hits++;
     midNext = 1;
-    RandomizeTargetLocation(minimumY, minimumX, maximumY, maximumX);
+    RandomizeTargetLocation(minY, minX, maxY, maxX);
     updateHits();
     updateAccuracy();
   }
-
-  updateHits();
-  updateAccuracy();
 }
 
 function updateHits() {
@@ -122,5 +120,5 @@ function newGame(size, gamemode) {
 }
 
 window.onload = () => {
-  newGame(rangeSlider.value, trainShortFlicks);
+  newGame(rangeSlider.value, trainAim);
 };
