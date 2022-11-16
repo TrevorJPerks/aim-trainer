@@ -7,7 +7,7 @@ let hits = 0;
 let shots = 0;
 
 rangeSlider.onchange = () => {
-  newGame(rangeSlider.value, trainAim);
+  newGame(rangeSlider.value, trainShortFlicks);
 };
 
 rangeSlider.oninput = () => {
@@ -58,9 +58,9 @@ function trainAim() {
   updateAccuracy();
 }
 
-let midNext = 0;
-
 // Gamemode 2
+let isMid = true;
+
 function trainShortFlicks() {
   // Viewport size
   const minY =
@@ -73,15 +73,15 @@ function trainShortFlicks() {
   const maxX =
     target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
 
-  if (midNext) {
+  if (isMid) {
     hits++;
     drawTarget();
-    midNext = 0;
+    isMid = false;
     updateHits();
     updateAccuracy();
   } else {
     hits++;
-    midNext = 1;
+    isMid = true;
     RandomizeTargetLocation(minY, minX, maxY, maxX);
     updateHits();
     updateAccuracy();
@@ -120,5 +120,5 @@ function newGame(size, gamemode) {
 }
 
 window.onload = () => {
-  newGame(rangeSlider.value, trainAim);
+  newGame(rangeSlider.value, trainShortFlicks);
 };
