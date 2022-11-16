@@ -7,7 +7,7 @@ let hits = 0;
 let shots = 0;
 
 rangeSlider.onchange = () => {
-  newGame(rangeSlider.value, killTarget);
+  newGame(rangeSlider.value, trainShortFlicks);
 };
 
 rangeSlider.oninput = () => {
@@ -37,25 +37,55 @@ function getRandomAxis(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-function RandomizeTargetLocation() {
-  // Viewport size minus Target size
-  const maximumY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
-  const maximumX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
-
-  // Min value keeps the target from overlapping the side bar
-  // Max value keeps the target from going off screen
-  const randomY = getRandomAxis(170, maximumY);
-  const randomX = getRandomAxis(170, maximumX);
+function RandomizeTargetLocation(minY, minX, maxYValue, maxXValue) {
+  const randomY = getRandomAxis(minY, maxYValue);
+  const randomX = getRandomAxis(minX, maxXValue);
 
   // Random Target Location
   target.style.top = `${randomY}px`;
   target.style.left = `${randomX}px`;
 }
 
-function killTarget() {
+// Gammode 1
+function trainAim() {
+  // Viewport size minus Target size
+  const maximumX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
+  const maximumY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
   hits++;
   drawTarget();
-  RandomizeTargetLocation();
+  RandomizeTargetLocation(170, 170, maximumY, maximumX);
+  updateHits();
+  updateAccuracy();
+}
+
+let midNext = 0;
+
+// Gamemode 2
+function trainShortFlicks() {
+  // Viewport size
+  const minimumY =
+    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
+  const minimumX =
+    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.4;
+
+  const maximumY =
+    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.4;
+  const maximumX =
+    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
+  if (midNext === 1) {
+    hits++;
+    drawTarget();
+    midNext = 0;
+    updateHits();
+    updateAccuracy();
+  } else {
+    hits++;
+    midNext = 1;
+    RandomizeTargetLocation(minimumY, minimumX, maximumY, maximumX);
+    updateHits();
+    updateAccuracy();
+  }
+
   updateHits();
   updateAccuracy();
 }
@@ -92,5 +122,5 @@ function newGame(size, gamemode) {
 }
 
 window.onload = () => {
-  newGame(rangeSlider.value, killTarget);
+  newGame(rangeSlider.value, trainShortFlicks);
 };
