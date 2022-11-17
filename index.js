@@ -74,7 +74,7 @@ function trainAim() {
 let isMid = false;
 
 function trainShortFlicks() {
-  // Plus and minus 40% of target
+  // Plus and Minus 40% of target
   const minY =
     target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
   const maxY =
