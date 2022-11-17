@@ -44,9 +44,8 @@ main {
   box-shadow: 10px 10px 16px -4px hsla(0, 0%, 0%, 0.2);
 }
 
-.stats {
+.sidebar {
   background-color: hsla(0, 0%, 0%, 0.4);
-
   padding: 20px;
   display: flex;
   flex-direction: column;
