@@ -68,7 +68,6 @@ function trainAim() {
   drawTarget();
   randomizeTargetLocation(170, maxY, 170, maxX);
   updateHits();
-  console.log(Stats.hits, Stats.shots, Stats.misses);
 }
 
 // Gamemode 2
