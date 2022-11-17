@@ -3,6 +3,7 @@ const rangeSlider = document.querySelector(".range-slider");
 
 const target = document.querySelector(".target");
 
+// Make this into an object you scrub
 let hits = 0;
 let misses = 0;
 let shots = 0;
@@ -12,9 +13,10 @@ rangeSlider.onchange = () => {
 };
 
 rangeSlider.oninput = () => {
-  document.querySelector(".slider-value").innerHTML = rangeSlider.value;
+  updateRangeSliderText();
 };
 
+// Track misses and shots taken
 gameSpace.addEventListener("mousedown", (e) => {
   if (
     e.target.classList.contains("game-container") ||
@@ -23,7 +25,10 @@ gameSpace.addEventListener("mousedown", (e) => {
     shots++;
     updateAccuracy();
   }
-  if (!e.target.classList.contains("target")) {
+  if (
+    !e.target.classList.contains("target") &&
+    e.target.classList.contains("game-container")
+  ) {
     misses++;
     updateMisses();
   }
@@ -44,7 +49,7 @@ function getRandomAxis(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-function RandomizeTargetLocation(minY, maxY, minX, maxX) {
+function randomizeTargetLocation(minY, maxY, minX, maxX) {
   const randomY = getRandomAxis(minY, maxY);
   const randomX = getRandomAxis(minX, maxX);
 
@@ -60,13 +65,12 @@ function trainAim() {
   const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
   hits++;
   drawTarget();
-  RandomizeTargetLocation(170, maxY, 170, maxX);
+  randomizeTargetLocation(170, maxY, 170, maxX);
   updateHits();
-  updateAccuracy();
 }
 
 // Gamemode 2
-let isMid = true;
+let isMid = false;
 
 function trainShortFlicks() {
   // Viewport size
@@ -85,14 +89,17 @@ function trainShortFlicks() {
     drawTarget();
     isMid = false;
     updateHits();
-    updateAccuracy();
   } else {
     hits++;
     isMid = true;
-    RandomizeTargetLocation(minY, minX, maxY, maxX);
+    randomizeTargetLocation(minY, minX, maxY, maxX);
     updateHits();
-    updateAccuracy();
   }
+  console.log(target.getBoundingClientRect().y);
+}
+
+function updateRangeSliderText() {
+  document.querySelector(".slider-value").innerHTML = rangeSlider.value + "px";
 }
 
 function updateHits() {
@@ -130,7 +137,7 @@ function newGame(size, gamemode) {
   updateHits();
   updateMisses();
   updateAccuracy();
-  document.querySelector(".slider-value").innerHTML = rangeSlider.value;
+  updateRangeSliderText();
 }
 
 window.onload = () => {
