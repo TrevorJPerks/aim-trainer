@@ -24,9 +24,9 @@ main {
   height: 100vh;
   /* iOS vieport fix */
   min-height: -webkit-fill-available;
-  color: hsl(0, 0%, 100%);
+  color: hsl(180, 100%, 50%);
   /* Blueprint BG */
-  background-color: rgb(70, 70, 70);
+  background-color: hsl(0, 0%, 27%);
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.2) 2px,
       transparent 2px
@@ -45,27 +45,23 @@ main {
 }
 
 .sidebar {
-  background-color: hsla(0, 0%, 0%, 0.4);
+  background-color: hsla(0, 0%, 0%, 0.6);
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  min-width: 170px;
+  width: 170px;
   height: 100vh;
   /* iOS vieport fix */
   min-height: -webkit-fill-available;
   gap: 50px;
 }
 
+.gamemodes,
+.stats,
 .options {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.gamemodes {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
