@@ -16,9 +16,17 @@ rangeSlider.onchange = () => {
 rangeSlider.oninput = () => {
   updateRangeSliderText();
 };
-
+function playSound(selector, volume) {
+  const SFX = document.getElementById(selector);
+  SFX.volume = volume;
+  SFX.play();
+}
 // Track misses and shots taken
 gameSpace.addEventListener("mousedown", (e) => {
+  if (e.target.classList.contains("target")) {
+    // Play Hit SFX
+    playSound("hitSFX", 0.2);
+  }
   if (
     e.target.classList.contains("game-container") ||
     e.target.classList.contains("target")
@@ -32,6 +40,8 @@ gameSpace.addEventListener("mousedown", (e) => {
   ) {
     Stats.misses++;
     updateMisses();
+    // Play Miss SFX
+    playSound("missSFX", 0.2);
   }
 });
 
