@@ -3,10 +3,11 @@ const rangeSlider = document.querySelector(".range-slider");
 
 const target = document.querySelector(".target");
 
-// Make this into an object you scrub
-let hits = 0;
-let misses = 0;
-let shots = 0;
+let Stats = {
+  hits: 0,
+  misses: 0,
+  shots: 0,
+};
 
 rangeSlider.onchange = () => {
   newGame(rangeSlider.value, trainAim);
@@ -22,14 +23,14 @@ gameSpace.addEventListener("mousedown", (e) => {
     e.target.classList.contains("game-container") ||
     e.target.classList.contains("target")
   ) {
-    shots++;
+    Stats.shots++;
     updateAccuracy();
   }
   if (
     !e.target.classList.contains("target") &&
     e.target.classList.contains("game-container")
   ) {
-    misses++;
+    Stats.misses++;
     updateMisses();
   }
 });
@@ -63,17 +64,18 @@ function trainAim() {
   // Viewport size minus Target size
   const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
   const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
-  hits++;
+  Stats.hits++;
   drawTarget();
   randomizeTargetLocation(170, maxY, 170, maxX);
   updateHits();
+  console.log(Stats.hits, Stats.shots, Stats.misses);
 }
 
 // Gamemode 2
 let isMid = false;
 
 function trainShortFlicks() {
-  // Viewport size
+  // Plus and minus 40% of target
   const minY =
     target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
   const maxY =
@@ -85,17 +87,16 @@ function trainShortFlicks() {
     target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
 
   if (isMid) {
-    hits++;
+    Stats.hits++;
     drawTarget();
     isMid = false;
     updateHits();
   } else {
-    hits++;
+    Stats.hits++;
     isMid = true;
     randomizeTargetLocation(minY, minX, maxY, maxX);
     updateHits();
   }
-  console.log(target.getBoundingClientRect().y);
 }
 
 function updateRangeSliderText() {
@@ -104,19 +105,19 @@ function updateRangeSliderText() {
 
 function updateHits() {
   const hitsDisplay = document.querySelector(".hits");
-  hitsDisplay.textContent = `Hits: ${hits}`;
+  hitsDisplay.textContent = `Hits: ${Stats.hits}`;
 }
 
 function updateMisses() {
   const missesDisplay = document.querySelector(".misses");
-  missesDisplay.textContent = `Misses: ${misses}`;
+  missesDisplay.textContent = `Misses: ${Stats.misses}`;
 }
 
 function updateAccuracy() {
   const accuracyDisplay = document.querySelector(".accuracy");
-  let accuracy = Math.round((hits / shots) * 100 * 10) / 10;
+  let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
   // Percentage Based Text color
-  if (shots === 0) {
+  if (Stats.shots === 0) {
     accuracy = 0;
     accuracyDisplay.style.color = "hsl(0, 0%, 100%)";
   } else if (accuracy <= 33) {
@@ -131,9 +132,9 @@ function updateAccuracy() {
 
 function newGame(size, gamemode) {
   drawTarget(size, gamemode);
-  hits = 0;
-  misses = 0;
-  shots = 0;
+  Stats.hits = 0;
+  Stats.misses = 0;
+  Stats.shots = 0;
   updateHits();
   updateMisses();
   updateAccuracy();
