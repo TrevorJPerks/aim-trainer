@@ -58,7 +58,9 @@ main {
   min-height: -webkit-fill-available;
   gap: 50px;
 }
-
+.sidebar h4 {
+  color: hsl(291, 33%, 62%);
+}
 .gamemodes,
 .stats,
 .options {
