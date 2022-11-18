@@ -21,6 +21,7 @@ function playSound(selector, volume) {
   SFX.volume = volume;
   SFX.play();
 }
+
 // Track hits, misses, and shots taken
 gameSpace.addEventListener("mousedown", (e) => {
   if (e.target.classList.contains("target")) {
