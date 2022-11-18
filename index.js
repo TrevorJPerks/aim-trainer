@@ -21,9 +21,11 @@ function playSound(selector, volume) {
   SFX.volume = volume;
   SFX.play();
 }
-// Track misses and shots taken
+// Track hits, misses, and shots taken
 gameSpace.addEventListener("mousedown", (e) => {
   if (e.target.classList.contains("target")) {
+    Stats.hits++;
+    updateHits();
     // Play Hit SFX
     playSound("hitSFX", 0.1);
   }
@@ -74,10 +76,8 @@ function trainAim() {
   // Viewport size minus Target size
   const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
   const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
-  Stats.hits++;
   drawTarget();
   randomizeTargetLocation(170, maxY, 170, maxX);
-  updateHits();
 }
 
 // Gamemode 2
@@ -96,15 +96,11 @@ function trainShortFlicks() {
     target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
 
   if (isMid) {
-    Stats.hits++;
     drawTarget();
     isMid = false;
-    updateHits();
   } else {
-    Stats.hits++;
     isMid = true;
     randomizeTargetLocation(minY, minX, maxY, maxX);
-    updateHits();
   }
 }
 
