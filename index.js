@@ -25,7 +25,7 @@ function playSound(selector, volume) {
 gameSpace.addEventListener("mousedown", (e) => {
   if (e.target.classList.contains("target")) {
     // Play Hit SFX
-    playSound("hitSFX", 0.2);
+    playSound("hitSFX", 0.1);
   }
   if (
     e.target.classList.contains("game-container") ||
@@ -41,7 +41,7 @@ gameSpace.addEventListener("mousedown", (e) => {
     Stats.misses++;
     updateMisses();
     // Play Miss SFX
-    playSound("missSFX", 0.2);
+    playSound("missSFX", 0.1);
   }
 });
 
