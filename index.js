@@ -16,6 +16,7 @@ rangeSlider.onchange = () => {
 rangeSlider.oninput = () => {
   updateRangeSliderText();
 };
+
 function playSound(selector, volume) {
   const SFX = document.getElementById(selector);
   SFX.volume = volume;
