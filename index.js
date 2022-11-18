@@ -98,8 +98,8 @@ function trainShortFlicks() {
     target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
 
   if (isMid) {
-    drawTarget();
     isMid = false;
+    drawTarget();
   } else {
     isMid = true;
     randomizeTargetLocation(minY, minX, maxY, maxX);
