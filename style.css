@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   /* No dragging, highlighting, or tap zooming */
   -webkit-user-drag: none;
   user-select: none;
@@ -13,7 +14,7 @@
 }
 
 body {
-  font-family: "Chakra Petch", sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 main {
@@ -63,6 +64,18 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
   gap: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.shortflicks-img,
+.freetrain-img {
+  padding-top: 10px;
+  width: 100px;
+  height: auto;
 }
 
 .range-slider {
