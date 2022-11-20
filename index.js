@@ -1,7 +1,7 @@
-const gameSpace = document.querySelector(".game-container");
-const rangeSlider = document.querySelector(".range-slider");
+const gameSpace = document.querySelector('.game-container');
+const rangeSlider = document.querySelector('.range-slider');
 
-const target = document.querySelector(".target");
+const target = document.querySelector('.target');
 
 let Stats = {
   hits: 0,
@@ -24,28 +24,28 @@ function playSound(selector, volume) {
 }
 
 // Track hits, misses, and shots taken
-gameSpace.addEventListener("mousedown", (e) => {
-  if (e.target.classList.contains("target")) {
+gameSpace.addEventListener('mousedown', (e) => {
+  if (e.target.classList.contains('target')) {
     Stats.hits++;
     updateHits();
     // Play Hit SFX
-    playSound("hitSFX", 0.1);
+    playSound('hitSFX', 0.1);
   }
   if (
-    e.target.classList.contains("game-container") ||
-    e.target.classList.contains("target")
+    e.target.classList.contains('game-container') ||
+    e.target.classList.contains('target')
   ) {
     Stats.shots++;
     updateAccuracy();
   }
   if (
-    !e.target.classList.contains("target") &&
-    e.target.classList.contains("game-container")
+    !e.target.classList.contains('target') &&
+    e.target.classList.contains('game-container')
   ) {
     Stats.misses++;
     updateMisses();
     // Play Miss SFX
-    playSound("missSFX", 0.1);
+    playSound('missSFX', 0.1);
   }
 });
 
@@ -54,10 +54,10 @@ function drawTarget(size, gamemode) {
   target.style.width = `${size}px`;
   target.style.height = `${size}px`;
   // Target Starting Location
-  target.style.top = "50vh";
-  target.style.left = "50vw";
+  target.style.top = '50vh';
+  target.style.left = '50vw';
 
-  target.addEventListener("mousedown", gamemode);
+  target.addEventListener('mousedown', gamemode);
 }
 
 function getRandomAxis(min, max) {
@@ -107,32 +107,32 @@ function trainShortFlicks() {
 }
 
 function updateRangeSliderText() {
-  document.querySelector(".slider-value").innerHTML = rangeSlider.value + "px";
+  document.querySelector('.slider-value').innerHTML = rangeSlider.value + 'px';
 }
 
 function updateHits() {
-  const hitsDisplay = document.querySelector(".hits");
+  const hitsDisplay = document.querySelector('.hits');
   hitsDisplay.textContent = `Hits: ${Stats.hits}`;
 }
 
 function updateMisses() {
-  const missesDisplay = document.querySelector(".misses");
+  const missesDisplay = document.querySelector('.misses');
   missesDisplay.textContent = `Misses: ${Stats.misses}`;
 }
 
 function updateAccuracy() {
-  const accuracyDisplay = document.querySelector(".accuracy");
+  const accuracyDisplay = document.querySelector('.accuracy');
   let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
   // Percentage Based Text color
   if (Stats.shots === 0) {
     accuracy = 0;
-    accuracyDisplay.style.color = "hsl(0, 0%, 100%)";
+    accuracyDisplay.style.color = 'hsl(0, 0%, 100%)';
   } else if (accuracy <= 33) {
-    accuracyDisplay.style.color = "hsl(0, 100%, 50%)";
+    accuracyDisplay.style.color = 'hsl(0, 100%, 50%)';
   } else if (accuracy > 33 && accuracy <= 75) {
-    accuracyDisplay.style.color = "hsl(30, 100%, 50%)";
+    accuracyDisplay.style.color = 'hsl(30, 100%, 50%)';
   } else if (accuracy > 76) {
-    accuracyDisplay.style.color = "hsl(100, 100%, 50%)";
+    accuracyDisplay.style.color = 'hsl(100, 100%, 50%)';
   }
   accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
 }
