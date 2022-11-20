@@ -57,18 +57,19 @@ function drawTarget(size, gamemode) {
   target.style.top = '50vh';
   target.style.left = '50vw';
 
+  // This isn't going to work unless you remove the previous even listener homie
   target.addEventListener('mousedown', gamemode);
 }
 
-function getRandomAxis(min, max) {
-  return Math.random() * (max - min) + min;
+function getRandomAxis(minAxis, maxAxis) {
+  return Math.random() * (maxAxis - minAxis) + minAxis;
 }
 
-function randomizeTargetLocation(minY, maxY, minX, maxX) {
-  const randomY = getRandomAxis(minY, maxY);
-  const randomX = getRandomAxis(minX, maxX);
+function randomizeTargetLocation(minYAxis, maxYAxis, minXAxis, maxXAxis) {
+  const randomY = getRandomAxis(minYAxis, maxYAxis);
+  const randomX = getRandomAxis(minXAxis, maxXAxis);
 
-  // Random Target Location
+  // Move Target to Randomized Target Location
   target.style.top = `${randomY}px`;
   target.style.left = `${randomX}px`;
 }
@@ -99,7 +100,8 @@ function trainShortFlicks() {
 
   if (isMid) {
     isMid = false;
-    drawTarget();
+    target.style.top = '50vh';
+    target.style.left = '50vw';
   } else {
     isMid = true;
     randomizeTargetLocation(minY, minX, maxY, maxX);
