@@ -3,24 +3,62 @@ const rangeSlider = document.querySelector('.range-slider');
 
 const target = document.querySelector('.target');
 
+let selectedGameMode = 'trainAim';
+
 let Stats = {
   hits: 0,
   misses: 0,
   shots: 0,
 };
 
+function updateRangeSliderText() {
+  document.querySelector('.slider-value').innerHTML = rangeSlider.value + 'px';
+}
+
 rangeSlider.onchange = () => {
-  newGame(rangeSlider.value, trainAim);
+  newGame(rangeSlider.value, selectedGameMode);
 };
 
 rangeSlider.oninput = () => {
   updateRangeSliderText();
 };
 
-function playSound(selector, volume) {
-  const SFX = document.getElementById(selector);
-  SFX.volume = volume;
-  SFX.play();
+// Gamemode Selection
+document.querySelector('.free-train').onclick = () => {
+  newGame(rangeSlider.value, (selectedGameMode = 'trainAim'));
+};
+
+document.querySelector('.short-flicks').onclick = () => {
+  newGame(rangeSlider.value, (selectedGameMode = 'trainShortFlicks'));
+};
+
+// function playSound(selector, volume) {
+//   const SFX = document.getElementById(selector);
+//   SFX.volume = volume;
+//   SFX.play();
+// }
+
+function drawTarget(size) {
+  // Target Size
+  target.style.width = `${size}px`;
+  target.style.height = `${size}px`;
+  // Target Starting Location
+  target.style.top = '50vh';
+  target.style.left = '50vw';
+
+  target.addEventListener('mousedown', doGameMode);
+}
+
+function doGameMode() {
+  // invoke gamemode
+  switch (selectedGameMode) {
+    case 'trainAim':
+      trainAim();
+      break;
+    case 'trainShortFlicks':
+      trainShortFlicks();
+      break;
+  }
 }
 
 // Track hits, misses, and shots taken
@@ -29,7 +67,7 @@ gameSpace.addEventListener('mousedown', (e) => {
     Stats.hits++;
     updateHits();
     // Play Hit SFX
-    playSound('hitSFX', 0.1);
+    // playSound('hitSFX', 0.1);
   }
   if (
     e.target.classList.contains('game-container') ||
@@ -45,41 +83,28 @@ gameSpace.addEventListener('mousedown', (e) => {
     Stats.misses++;
     updateMisses();
     // Play Miss SFX
-    playSound('missSFX', 0.1);
+    // playSound('missSFX', 0.1);
   }
 });
 
-function drawTarget(size, gamemode) {
-  // Target Size
-  target.style.width = `${size}px`;
-  target.style.height = `${size}px`;
-  // Target Starting Location
-  target.style.top = '50vh';
-  target.style.left = '50vw';
-
-  // This isn't going to work unless you remove the previous even listener homie
-  target.addEventListener('mousedown', gamemode);
+function getRandomAxis(min, max) {
+  return Math.random() * (max - min) + min;
 }
 
-function getRandomAxis(minAxis, maxAxis) {
-  return Math.random() * (maxAxis - minAxis) + minAxis;
-}
+function randomizeTargetLocation(minY, maxY, minX, maxX) {
+  const randomY = getRandomAxis(minY, maxY);
+  const randomX = getRandomAxis(minX, maxX);
 
-function randomizeTargetLocation(minYAxis, maxYAxis, minXAxis, maxXAxis) {
-  const randomY = getRandomAxis(minYAxis, maxYAxis);
-  const randomX = getRandomAxis(minXAxis, maxXAxis);
-
-  // Move Target to Randomized Target Location
+  // Random Target Location
   target.style.top = `${randomY}px`;
   target.style.left = `${randomX}px`;
 }
 
-// Gammode 1
+// Gammode 1 *Default*
 function trainAim() {
   // Viewport size minus Target size
   const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
   const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
-  drawTarget();
   randomizeTargetLocation(170, maxY, 170, maxX);
 }
 
@@ -106,10 +131,6 @@ function trainShortFlicks() {
     isMid = true;
     randomizeTargetLocation(minY, minX, maxY, maxX);
   }
-}
-
-function updateRangeSliderText() {
-  document.querySelector('.slider-value').innerHTML = rangeSlider.value + 'px';
 }
 
 function updateHits() {
@@ -140,7 +161,8 @@ function updateAccuracy() {
 }
 
 function newGame(size, gamemode) {
-  drawTarget(size, gamemode);
+  selectedGameMode = gamemode;
+  drawTarget(size);
   Stats.hits = 0;
   Stats.misses = 0;
   Stats.shots = 0;
@@ -151,5 +173,5 @@ function newGame(size, gamemode) {
 }
 
 window.onload = () => {
-  newGame(rangeSlider.value, trainAim);
+  newGame(rangeSlider.value, 'trainAim');
 };
