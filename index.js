@@ -32,11 +32,11 @@ document.querySelector('.short-flicks').onclick = () => {
   newGame(rangeSlider.value, (selectedGameMode = 'trainShortFlicks'));
 };
 
-// function playSound(selector, volume) {
-//   const SFX = document.getElementById(selector);
-//   SFX.volume = volume;
-//   SFX.play();
-// }
+function playSound(selector, volume) {
+  const SFX = document.getElementById(selector);
+  SFX.volume = volume;
+  SFX.play();
+}
 
 function drawTarget(size) {
   // Target Size
@@ -67,7 +67,7 @@ gameSpace.addEventListener('mousedown', (e) => {
     Stats.hits++;
     updateHits();
     // Play Hit SFX
-    // playSound('hitSFX', 0.1);
+    playSound('hitSFX', 0.1);
   }
   if (
     e.target.classList.contains('game-container') ||
@@ -83,7 +83,7 @@ gameSpace.addEventListener('mousedown', (e) => {
     Stats.misses++;
     updateMisses();
     // Play Miss SFX
-    // playSound('missSFX', 0.1);
+    playSound('missSFX', 0.1);
   }
 });
 
@@ -114,14 +114,14 @@ let isMid = false;
 function trainShortFlicks() {
   // Plus and Minus 40% of target
   const minY =
-    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
+    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.2;
   const maxY =
-    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.4;
+    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.2;
 
   const minX =
-    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.4;
+    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.2;
   const maxX =
-    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
+    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.2;
 
   if (isMid) {
     isMid = false;
@@ -129,7 +129,7 @@ function trainShortFlicks() {
     target.style.left = '50vw';
   } else {
     isMid = true;
-    randomizeTargetLocation(minY, minX, maxY, maxX);
+    randomizeTargetLocation(minY, maxY, minX, maxX);
   }
 }
 
