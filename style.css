@@ -35,13 +35,17 @@ main {
 }
 
 .game-container {
-  cursor: url(images/cursor.cur), auto;
+  cursor: url(images/greendot.cur), auto;
 }
 
 .target {
   position: absolute;
   border-radius: 100%;
   box-shadow: 10px 10px 16px -4px hsla(0, 0%, 0%, 0.2);
+}
+
+.target:hover {
+  cursor: url(images/reddot.cur), auto;
 }
 
 .sidebar {
