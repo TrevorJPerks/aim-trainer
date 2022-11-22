@@ -38,6 +38,18 @@ function playSound(selector, volume) {
   SFX.play();
 }
 
+function muteSound(boolean) {
+  document.querySelectorAll('audio').forEach((audio) => {
+    audio.muted = boolean;
+  });
+}
+
+document.querySelector('.audio-toggle').onclick = () => {
+  if (document.querySelector('.audio-toggle').checked) {
+    muteSound(true);
+  } else muteSound(false);
+};
+
 function centerTarget() {
   target.style.top = '50%';
   target.style.left = '50%';
@@ -105,6 +117,33 @@ function randomizeTargetLocation(minY, maxY, minX, maxX) {
   target.style.left = `${randomX}px`;
 }
 
+function updateHits() {
+  const hitsDisplay = document.querySelector('.hits');
+  hitsDisplay.textContent = `Hits: ${Stats.hits}`;
+}
+
+function updateMisses() {
+  const missesDisplay = document.querySelector('.misses');
+  missesDisplay.textContent = `Misses: ${Stats.misses}`;
+}
+
+function updateAccuracy() {
+  const accuracyDisplay = document.querySelector('.accuracy');
+  let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
+  // Percentage Based Text color
+  if (Stats.shots === 0) {
+    accuracy = 0;
+    accuracyDisplay.style.color = 'hsl(0, 0%, 100%)';
+  } else if (accuracy <= 33) {
+    accuracyDisplay.style.color = 'hsl(0, 100%, 50%)';
+  } else if (accuracy > 33 && accuracy <= 75) {
+    accuracyDisplay.style.color = 'hsl(30, 100%, 50%)';
+  } else if (accuracy > 76) {
+    accuracyDisplay.style.color = 'hsl(100, 100%, 50%)';
+  }
+  accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
+}
+
 // Gammode 1 *Default*
 function trainAim() {
   // Viewport size minus Target size
@@ -137,33 +176,6 @@ function trainShortFlicks() {
   }
 }
 
-function updateHits() {
-  const hitsDisplay = document.querySelector('.hits');
-  hitsDisplay.textContent = `Hits: ${Stats.hits}`;
-}
-
-function updateMisses() {
-  const missesDisplay = document.querySelector('.misses');
-  missesDisplay.textContent = `Misses: ${Stats.misses}`;
-}
-
-function updateAccuracy() {
-  const accuracyDisplay = document.querySelector('.accuracy');
-  let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
-  // Percentage Based Text color
-  if (Stats.shots === 0) {
-    accuracy = 0;
-    accuracyDisplay.style.color = 'hsl(0, 0%, 100%)';
-  } else if (accuracy <= 33) {
-    accuracyDisplay.style.color = 'hsl(0, 100%, 50%)';
-  } else if (accuracy > 33 && accuracy <= 75) {
-    accuracyDisplay.style.color = 'hsl(30, 100%, 50%)';
-  } else if (accuracy > 76) {
-    accuracyDisplay.style.color = 'hsl(100, 100%, 50%)';
-  }
-  accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
-}
-
 function newGame(size, gamemode) {
   selectedGameMode = gamemode;
   drawTarget(size);
@@ -178,4 +190,5 @@ function newGame(size, gamemode) {
 
 window.onload = () => {
   newGame(rangeSlider.value, 'trainAim');
+  document.querySelector('.audio-toggle').checked = false;
 };
