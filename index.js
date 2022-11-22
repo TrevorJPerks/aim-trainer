@@ -131,19 +131,6 @@ gameSpace.addEventListener('mousedown', (e) => {
   }
 });
 
-function getRandomAxis(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-function randomizeTargetLocation(minY, maxY, minX, maxX) {
-  const randomY = getRandomAxis(minY, maxY);
-  const randomX = getRandomAxis(minX, maxX);
-
-  // Random Target Location
-  target.style.top = `${randomY}px`;
-  target.style.left = `${randomX}px`;
-}
-
 function updateHits() {
   const hitsDisplay = document.querySelector('.hits');
   hitsDisplay.textContent = `Hits: ${Stats.hits}`;
@@ -169,6 +156,19 @@ function updateAccuracy() {
     accuracyDisplay.style.color = 'hsl(100, 100%, 50%)';
   }
   accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
+}
+
+function getRandomAxis(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function randomizeTargetLocation(minY, maxY, minX, maxX) {
+  const randomY = getRandomAxis(minY, maxY);
+  const randomX = getRandomAxis(minX, maxX);
+
+  // Random Target Location
+  target.style.top = `${randomY}px`;
+  target.style.left = `${randomX}px`;
 }
 
 // Gammode 1 *Default*
