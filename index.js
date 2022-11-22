@@ -60,10 +60,16 @@ function toggleSidebar() {
     sidebar.style.width = '0';
     sidebarButton.textContent = '>';
     sidebarButton.style.left = '0';
+    sidebarButton.style.height = '200px';
+    sidebarButton.style.width = '20px';
+    sidebarButton.style.opacity = '0.4';
   } else {
     sidebar.style.width = '170px';
     sidebarButton.textContent = '<';
     sidebarButton.style.left = '170px';
+    sidebarButton.style.height = '150px';
+    sidebarButton.style.opacity = '0.6';
+    sidebarButton.style.width = '25px';
   }
 }
 
@@ -212,4 +218,5 @@ function newGame(size, gamemode) {
 window.onload = () => {
   newGame(rangeSlider.value, 'trainAim');
   document.querySelector('.audio-toggle').checked = false;
+  toggleSidebar();
 };
