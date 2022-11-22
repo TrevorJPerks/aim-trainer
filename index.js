@@ -38,13 +38,18 @@ function playSound(selector, volume) {
   SFX.play();
 }
 
+function centerTarget() {
+  target.style.top = '50%';
+  target.style.left = '50%';
+  target.style.transform = 'translate(-50%, -50%)';
+}
+
 function drawTarget(size) {
   // Target Size
   target.style.width = `${size}px`;
   target.style.height = `${size}px`;
   // Target Starting Location
-  target.style.top = '50vh';
-  target.style.left = '50vw';
+  centerTarget();
 
   target.addEventListener('mousedown', doGameMode);
 }
@@ -125,8 +130,7 @@ function trainShortFlicks() {
 
   if (isMid) {
     isMid = false;
-    target.style.top = '50vh';
-    target.style.left = '50vw';
+    centerTarget();
   } else {
     isMid = true;
     randomizeTargetLocation(minY, maxY, minX, maxX);
