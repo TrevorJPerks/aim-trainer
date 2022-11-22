@@ -57,12 +57,10 @@ function toggleSidebar() {
   const sidebar = document.querySelector('.sidebar');
   const sidebarButton = document.querySelector('.toggle-sidebar');
   if (isSidebarHidden) {
-    sidebar.style.scale = '0';
     sidebar.style.width = '0';
     sidebarButton.textContent = '>';
     sidebarButton.style.left = '0';
   } else {
-    sidebar.style.scale = '1';
     sidebar.style.width = '170px';
     sidebarButton.textContent = '<';
     sidebarButton.style.left = '170px';
