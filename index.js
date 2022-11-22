@@ -50,6 +50,29 @@ document.querySelector('.audio-toggle').onclick = () => {
   } else muteSound(false);
 };
 
+let isSidebarHidden = false;
+// Sidebar Toggle
+function toggleSidebar() {
+  isSidebarHidden = !isSidebarHidden;
+  const sidebar = document.querySelector('.sidebar');
+  const sidebarButton = document.querySelector('.toggle-sidebar');
+  if (isSidebarHidden) {
+    sidebar.style.scale = '0';
+    sidebar.style.width = '0';
+    sidebarButton.textContent = '>';
+    sidebarButton.style.left = '0';
+  } else {
+    sidebar.style.scale = '1';
+    sidebar.style.width = '170px';
+    sidebarButton.textContent = '<';
+    sidebarButton.style.left = '170px';
+  }
+}
+
+document.querySelector('.toggle-sidebar').onclick = () => {
+  toggleSidebar();
+};
+
 function centerTarget() {
   target.style.top = '50%';
   target.style.left = '50%';
@@ -133,7 +156,7 @@ function updateAccuracy() {
   // Percentage Based Text color
   if (Stats.shots === 0) {
     accuracy = 0;
-    accuracyDisplay.style.color = 'hsl(0, 0%, 100%)';
+    accuracyDisplay.style.color = 'hsl(180, 100%, 50%)';
   } else if (accuracy <= 33) {
     accuracyDisplay.style.color = 'hsl(0, 100%, 50%)';
   } else if (accuracy > 33 && accuracy <= 75) {
@@ -149,7 +172,7 @@ function trainAim() {
   // Viewport size minus Target size
   const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
   const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
-  randomizeTargetLocation(170, maxY, 170, maxX);
+  randomizeTargetLocation(30, maxY, 30, maxX);
 }
 
 // Gamemode 2
