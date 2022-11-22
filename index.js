@@ -183,6 +183,7 @@ function trainAim() {
 let isMid = false;
 
 function trainShortFlicks() {
+  isMid = !isMid;
   // Plus and Minus 40% of target
   const minY =
     target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.2;
@@ -195,10 +196,8 @@ function trainShortFlicks() {
     target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.2;
 
   if (isMid) {
-    isMid = false;
     centerTarget();
   } else {
-    isMid = true;
     randomizeTargetLocation(minY, maxY, minX, maxX);
   }
 }
