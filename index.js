@@ -205,6 +205,7 @@ function trainShortFlicks() {
 function newGame(size, gamemode) {
   selectedGameMode = gamemode;
   drawTarget(size);
+  isMid = true;
   Stats.hits = 0;
   Stats.misses = 0;
   Stats.shots = 0;
