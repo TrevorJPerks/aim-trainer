@@ -50,31 +50,27 @@ document.querySelector('.audio-toggle').onclick = () => {
   } else muteSound(false);
 };
 
-let isSidebarHidden = false;
 // Sidebar Toggle
-function toggleSidebar() {
-  isSidebarHidden = !isSidebarHidden;
-  const sidebar = document.querySelector('.sidebar');
-  const sidebarButton = document.querySelector('.toggle-sidebar');
-  if (isSidebarHidden) {
-    sidebar.style.width = '0';
-    sidebarButton.textContent = '>';
-    sidebarButton.style.left = '0';
-    sidebarButton.style.height = '200px';
-    sidebarButton.style.width = '20px';
-    sidebarButton.style.opacity = '0.4';
+function toggleMenu(menuSelector, buttonSelector) {
+  const menu = document.getElementById(menuSelector);
+  const menuButton = document.getElementById(buttonSelector);
+  if (menuButton.value == 'ON') {
+    menuButton.value = 'OFF';
+    menu.style.height = '0';
+    menuButton.style.opacity = '0.4';
   } else {
-    sidebar.style.width = '170px';
-    sidebarButton.textContent = '<';
-    sidebarButton.style.left = '170px';
-    sidebarButton.style.height = '150px';
-    sidebarButton.style.opacity = '0.6';
-    sidebarButton.style.width = '25px';
+    menuButton.value = 'ON';
+    menu.style.height = '150px';
+    menuButton.style.opacity = '0.6';
   }
 }
 
-document.querySelector('.toggle-sidebar').onclick = () => {
-  toggleSidebar();
+document.getElementById('gamemode-tab').onclick = () => {
+  toggleMenu('gmMenu', 'gamemode-tab');
+};
+
+document.getElementById('option-tab').onclick = () => {
+  toggleMenu('optionMenu', 'option-tab');
 };
 
 function centerTarget() {
@@ -218,5 +214,6 @@ function newGame(size, gamemode) {
 window.onload = () => {
   newGame(rangeSlider.value, 'trainAim');
   document.querySelector('.audio-toggle').checked = false;
-  toggleSidebar();
+  toggleMenu('gmMenu', 'gamemode-tab');
+  toggleMenu('optionMenu', 'option-tab');
 };

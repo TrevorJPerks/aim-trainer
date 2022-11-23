@@ -35,40 +35,59 @@
         <p class="accuracy">Accuracy: 0%</p>
       </div>
 
-      <!-- Sidebar -->
-      <button class="toggle-sidebar" type="button"><</button>
-      <div class="sidebar">
-        <div class="options">
-          <h4>Options</h4>
-          <label
-            >Target Size:
-            <p class="slider-value">50</p></label
-          >
-          <input
-            class="range-slider"
-            type="range"
-            name="slider"
-            id="rangeSlider"
-            min="25"
-            max="150"
-            step="25"
-            value="75"
-          />
-          <label>Mute Audio</label>
-          <input type="checkbox" class="audio-toggle" name="audioToggle" />
+      <!-- Gamemode Menu -->
+      <div id="gamemode-menu" class="menu-wrapper">
+        <button
+          id="gamemode-tab"
+          class="toggle-menu gamemode-button"
+          type="button"
+          value="ON"
+        >
+          Gamemode
+        </button>
+        <div id="gmMenu" class="menu">
+          <div class="gamemodes">
+            <a href="#" class="free-train">
+              Free Train
+              <img src="images/trainaim.jpg" alt="" class="freetrain-img" />
+            </a>
+
+            <a href="#" class="short-flicks">
+              Short Flicks
+              <img
+                src="images/shortflicks.jpg"
+                alt=""
+                class="shortflicks-img"
+              />
+            </a>
+          </div>
         </div>
+      </div>
 
-        <div class="gamemodes">
-          <h4>Gamemodes</h4>
-          <a href="#" class="free-train">
-            Free Train
-            <img src="images/trainaim.jpg" alt="" class="freetrain-img" />
-          </a>
-
-          <a href="#" class="short-flicks">
-            Short Flicks
-            <img src="images/shortflicks.jpg" alt="" class="shortflicks-img" />
-          </a>
+      <!-- Options Menu -->
+      <div id="option-menu" class="menu-wrapper">
+        <button id="option-tab" class="toggle-menu" type="button" value="ON">
+          Options
+        </button>
+        <div id="optionMenu" class="menu">
+          <div class="options">
+            <label
+              >Target Size:
+              <p class="slider-value">50</p></label
+            >
+            <input
+              class="range-slider"
+              type="range"
+              name="slider"
+              id="rangeSlider"
+              min="25"
+              max="150"
+              step="25"
+              value="75"
+            />
+            <label>Mute Audio</label>
+            <input type="checkbox" class="audio-toggle" name="audioToggle" />
+          </div>
         </div>
       </div>
     </main>
