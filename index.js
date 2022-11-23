@@ -53,7 +53,6 @@ document.querySelector('.audio-toggle').onclick = () => {
 // Press M to mute/unmute
 window.onkeydown = (event) => {
   if (event.keyCode == 77) {
-    console.log('keypress registered');
     if (document.querySelector('.audio-toggle').checked == false) {
       document.querySelector('.audio-toggle').checked = true;
       muteSound(true);
