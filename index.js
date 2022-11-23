@@ -50,7 +50,7 @@ document.querySelector('.audio-toggle').onclick = () => {
   } else muteSound(false);
 };
 
-// Sidebar Toggle
+// Menu Toggle
 function toggleMenu(menuSelector, buttonSelector) {
   const menu = document.getElementById(menuSelector);
   const menuButton = document.getElementById(buttonSelector);
