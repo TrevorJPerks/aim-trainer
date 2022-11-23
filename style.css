@@ -40,8 +40,21 @@ main {
 
 .target {
   position: absolute;
+  z-index: 999;
   border-radius: 100%;
-  box-shadow: 10px 10px 16px -4px hsla(0, 0%, 0%, 0.2);
+  text-shadow: 2px 2px 4px hsla(0, 0%, 0%, 0.6);
+}
+
+.stats {
+  border: 1px solid fire;
+  position: fixed;
+  z-index: 0;
+  text-align: center;
+  line-height: 24px;
+  margin: 20px;
+  width: 150px;
+  color: hsl(0, 0%, 100%);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .sidebar {
@@ -84,7 +97,6 @@ main {
 }
 
 .gamemodes,
-.stats,
 .options {
   display: flex;
   flex-direction: column;
