@@ -56,12 +56,14 @@ function toggleMenu(menuSelector, buttonSelector) {
   const menuButton = document.getElementById(buttonSelector);
   if (menuButton.value == 'ON') {
     menuButton.value = 'OFF';
-    menu.style.height = '0';
+    menu.classList.add('collapsed');
     menuButton.style.opacity = '0.4';
+    menuButton.style.width = '100px';
   } else {
     menuButton.value = 'ON';
-    menu.style.height = '150px';
+    menu.classList.remove('collapsed');
     menuButton.style.opacity = '0.6';
+    menuButton.style.width = menu.getBoundingClientRect().width + 'px';
   }
 }
 
