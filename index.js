@@ -174,7 +174,7 @@ function trainAim() {
   // Viewport size minus Target size
   const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
   const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
-  randomizeTargetLocation(30, maxY, 30, maxX);
+  randomizeTargetLocation(75, maxY, 75, maxX);
 }
 
 // Gamemode 2
