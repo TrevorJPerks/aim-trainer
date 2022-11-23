@@ -50,6 +50,20 @@ document.querySelector('.audio-toggle').onclick = () => {
   } else muteSound(false);
 };
 
+// Press M to mute/unmute
+window.onkeydown = (event) => {
+  if (event.keyCode == 77) {
+    console.log('keypress registered');
+    if (document.querySelector('.audio-toggle').checked == false) {
+      document.querySelector('.audio-toggle').checked = true;
+      muteSound(true);
+    } else {
+      document.querySelector('.audio-toggle').checked = false;
+      muteSound(false);
+    }
+  }
+};
+
 // Menu Toggle
 function toggleMenu(menuSelector, buttonSelector) {
   const menu = document.getElementById(menuSelector);
