@@ -114,8 +114,7 @@ button {
   background-color: hsl(0, 0%, 0%);
   opacity: 0.6;
   color: #fff;
-  transition-delay: 0.3s;
-  transition-duration: 0.2s;
+  transition-duration: 0.3s;
 }
 
 a {
