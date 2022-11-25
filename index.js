@@ -50,8 +50,9 @@ document.querySelector('.audio-toggle').onclick = () => {
   } else muteSound(false);
 };
 
-// Press M to mute/unmute
+// Keystrokes
 window.onkeydown = (event) => {
+  // Press M to mute/unmute
   if (event.keyCode == 77) {
     if (document.querySelector('.audio-toggle').checked == false) {
       document.querySelector('.audio-toggle').checked = true;
@@ -61,10 +62,7 @@ window.onkeydown = (event) => {
       muteSound(false);
     }
   }
-};
-
-// Press R to reset game
-window.onkeydown = (event) => {
+  // Press R to reset game
   if (event.keyCode == 82) {
     newGame(rangeSlider.value, selectedGameMode);
   }
