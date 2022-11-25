@@ -63,6 +63,13 @@ window.onkeydown = (event) => {
   }
 };
 
+// Press R to reset currently selected gamemode
+window.onkeydown = (event) => {
+  if (event.keyCode == 82) {
+    newGame(rangeSlider.value, selectedGameMode);
+  }
+};
+
 // Menu Toggle
 function toggleMenu(menuSelector, buttonSelector) {
   const menu = document.getElementById(menuSelector);
