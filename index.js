@@ -63,7 +63,7 @@ window.onkeydown = (event) => {
   }
 };
 
-// Press R to reset currently selected gamemode
+// Press R to reset game
 window.onkeydown = (event) => {
   if (event.keyCode == 82) {
     newGame(rangeSlider.value, selectedGameMode);
@@ -76,12 +76,12 @@ function toggleMenu(menuSelector, buttonSelector) {
   const menuButton = document.getElementById(buttonSelector);
   if (menuButton.value == 'ON') {
     menuButton.value = 'OFF';
-    menu.classList.add('collapsed');
+    menu.style.maxHeight = 0;
     menuButton.style.opacity = '0.4';
     menuButton.style.width = '100px';
   } else {
     menuButton.value = 'ON';
-    menu.classList.remove('collapsed');
+    menu.style.maxHeight = '500px';
     menuButton.style.opacity = '0.6';
     menuButton.style.width = menu.getBoundingClientRect().width + 'px';
   }

@@ -71,7 +71,7 @@ main {
   align-items: center;
   background-color: hsla(0, 0%, 0%, 0.6);
   cursor: default;
-  height: auto;
+  transition: 0.3s;
 }
 
 #gamemode-menu,
@@ -114,7 +114,8 @@ button {
   background-color: hsl(0, 0%, 0%);
   opacity: 0.6;
   color: #fff;
-  transition: 0.3s;
+  transition-delay: 0.3s;
+  transition-duration: 0.2s;
 }
 
 a {
