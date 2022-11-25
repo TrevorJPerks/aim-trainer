@@ -197,14 +197,14 @@ function trainShortFlicks() {
   isMid = !isMid;
   // Plus and Minus 40% of target
   const minY =
-    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.2;
+    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
   const maxY =
-    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.2;
+    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.4;
 
   const minX =
-    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.2;
+    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.4;
   const maxX =
-    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.2;
+    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
 
   if (isMid) {
     centerTarget();
