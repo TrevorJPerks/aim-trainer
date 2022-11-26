@@ -198,10 +198,8 @@ function trainAim() {
 }
 
 // Gamemode 2
-let isMid = false;
 
 function trainShortFlicks() {
-  isMid = !isMid;
   // Plus and Minus 40% of target
   const minY =
     target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
@@ -213,17 +211,19 @@ function trainShortFlicks() {
   const maxX =
     target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
 
-  if (isMid) {
+  if (target.value == 'notCenter') {
     centerTarget();
+    target.value = 'center';
   } else {
     randomizeTargetLocation(minY, maxY, minX, maxX);
+    target.value = 'notCenter';
   }
 }
 
 function newGame(size, gamemode) {
   selectedGameMode = gamemode;
+  target.value = 'center';
   drawTarget(size);
-  isMid = true;
   Stats.hits = 0;
   Stats.misses = 0;
   Stats.shots = 0;
