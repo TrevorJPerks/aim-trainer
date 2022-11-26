@@ -37,7 +37,10 @@ main {
   z-index: 999;
   border-radius: 100%;
   box-shadow: 4px 4px 9px -2px hsla(0, 0%, 0%, 0.6);
-  transition: 0.1s;
+}
+
+.animate-target {
+  transition-duration: 0.1s;
 }
 
 .stats {

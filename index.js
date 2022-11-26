@@ -44,6 +44,10 @@ function muteSound(boolean) {
   });
 }
 
+function instantModeToggle() {
+  document.querySelector('.target').classList.toggle('animate-target');
+}
+
 document.querySelector('.audio-toggle').onclick = () => {
   if (document.querySelector('.audio-toggle').checked) {
     muteSound(true);
@@ -65,6 +69,10 @@ window.onkeydown = (event) => {
   // Press R to reset game
   if (event.keyCode == 82) {
     newGame(rangeSlider.value, selectedGameMode);
+  }
+
+  if (event.keyCode == 73) {
+    instantModeToggle();
   }
 };
 
