@@ -254,6 +254,7 @@ function newGame(size, gamemode) {
 window.onload = () => {
   newGame(rangeSlider.value, 'trainAim');
   document.querySelector('.audio-toggle').checked = false;
+  document.querySelector('.instantmode-toggle').checked = false;
   toggleMenu('gmMenu', 'gamemode-tab');
   toggleMenu('optionMenu', 'option-tab');
 };
