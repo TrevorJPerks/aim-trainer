@@ -39,10 +39,6 @@ main {
   box-shadow: 4px 4px 9px -2px hsla(0, 0%, 0%, 0.6);
 }
 
-.animate-target {
-  transition-duration: 0.1s;
-}
-
 .stats {
   border: 1px solid fire;
   position: fixed;
@@ -142,6 +138,6 @@ a {
 
 /* JS appended Classes */
 
-.collapsed {
-  max-height: 0px;
+.animate-target {
+  transition-duration: 0.1s;
 }

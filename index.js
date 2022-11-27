@@ -54,6 +54,10 @@ document.querySelector('.audio-toggle').onclick = () => {
   } else muteSound(false);
 };
 
+document.querySelector('.instantmode-toggle').onclick = () => {
+  instantModeToggle();
+};
+
 // Keystrokes
 window.onkeydown = (event) => {
   // Press M to mute/unmute
@@ -70,9 +74,15 @@ window.onkeydown = (event) => {
   if (event.keyCode == 82) {
     newGame(rangeSlider.value, selectedGameMode);
   }
-
+  // Press I to toggle instantMode
   if (event.keyCode == 73) {
-    instantModeToggle();
+    if (document.querySelector('.instantmode-toggle').checked == false) {
+      document.querySelector('.instantmode-toggle').checked = true;
+      instantModeToggle();
+    } else {
+      document.querySelector('.instantmode-toggle').checked = false;
+      instantModeToggle();
+    }
   }
 };
 
