@@ -96,6 +96,7 @@ function toggleMenu(menuSelector, buttonSelector) {
     menu.style.maxHeight = '500px';
     menuButton.style.opacity = '0.6';
     menuButton.style.borderBottom = '1px solid hsl(180, 100%, 50%)';
+    menuButton.style.boxShadow = ' 0px 7px 6px 0px hsla(180, 100%, 50%, 0.06)';
     menuButton.style.width = menu.getBoundingClientRect().width + 'px';
   } else {
     menuButton.value = 'OFF';
