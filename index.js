@@ -25,20 +25,22 @@ rangeSlider.oninput = () => {
 
 const highlightSelectedGamemode = (e) => {
   const gamemodeIcon = document.querySelectorAll('.gamemode-img');
-  gamemodeIcon.forEach((icon) => {
-    icon.classList.remove('selected-gamemode');
-  });
-  e.target.classList.add('selected-gamemode');
+  if (e.target.classList.contains('gamemode-img')) {
+    gamemodeIcon.forEach((icon) => {
+      icon.classList.remove('selected-gamemode');
+    });
+    e.target.classList.add('selected-gamemode');
+  }
 };
 
 // Gamemode Selection
-document.querySelector('.free-train').onclick = (e) => {
+document.querySelector('.freetrain-img').onclick = (e) => {
   newGame(rangeSlider.value, (selectedGameMode = 'trainAim'));
   document.querySelector('.current-gamemode').innerHTML = 'Train Aim';
   highlightSelectedGamemode(e);
 };
 
-document.querySelector('.short-flicks').onclick = (e) => {
+document.querySelector('.shortflicks-img').onclick = (e) => {
   newGame(rangeSlider.value, (selectedGameMode = 'trainShortFlicks'));
   document.querySelector('.current-gamemode').innerHTML = 'Short Flicks';
   highlightSelectedGamemode(e);
