@@ -11,9 +11,9 @@ let Stats = {
   shots: 0,
 };
 
-function updateRangeSliderText() {
-  document.querySelector('.slider-value').innerHTML = rangeSlider.value + 'px';
-}
+const updateRangeSliderText = () =>
+  (document.querySelector('.slider-value').innerHTML =
+    rangeSlider.value + 'px');
 
 rangeSlider.onchange = () => {
   newGame(rangeSlider.value, selectedGameMode);
@@ -32,22 +32,22 @@ document.querySelector('.short-flicks').onclick = () => {
   newGame(rangeSlider.value, (selectedGameMode = 'trainShortFlicks'));
 };
 
-function playSound(selector, volume) {
+const playSound = (selector, volume) => {
   const SFX = document.getElementById(selector);
   SFX.volume = volume;
   SFX.play();
-}
+};
 
-function muteSound(boolean) {
+const muteSound = (boolean) => {
   document.querySelectorAll('audio').forEach((audio) => {
     audio.muted = boolean;
   });
-}
+};
 
-function instantModeToggle() {
+const instantModeToggle = () =>
   document.querySelector('.target').classList.toggle('animate-target');
-}
 
+// Option Toggles
 document.querySelector('.audio-toggle').onclick = () => {
   if (document.querySelector('.audio-toggle').checked) {
     muteSound(true);
@@ -58,7 +58,7 @@ document.querySelector('.instantmode-toggle').onclick = () => {
   instantModeToggle();
 };
 
-// Keystrokes
+// Keybinds
 window.onkeydown = (event) => {
   // Press M to mute/unmute
   if (event.keyCode == 77) {
@@ -87,9 +87,9 @@ window.onkeydown = (event) => {
 };
 
 // Menu Toggle
-function toggleMenu(menuSelector, buttonSelector) {
-  const menu = document.getElementById(menuSelector);
-  const menuButton = document.getElementById(buttonSelector);
+const toggleMenu = (menuElementId, buttonElementId) => {
+  const menu = document.getElementById(menuElementId);
+  const menuButton = document.getElementById(buttonElementId);
   if (menuButton.value == 'OFF') {
     menuButton.value = 'ON';
     menuButton.style.transitionDelay = '0s';
@@ -106,7 +106,7 @@ function toggleMenu(menuSelector, buttonSelector) {
     menuButton.style.width = '100px';
     menuButton.style.borderBottom = '1px solid hsl(0, 0%, 0%';
   }
-}
+};
 
 document.getElementById('gamemode-tab').onclick = () => {
   toggleMenu('gmMenu', 'gamemode-tab');
@@ -116,13 +116,13 @@ document.getElementById('option-tab').onclick = () => {
   toggleMenu('optionMenu', 'option-tab');
 };
 
-function centerTarget() {
+const centerTarget = () => {
   target.style.top = '50%';
   target.style.left = '50%';
   target.style.transform = 'translate(-50%, -50%)';
-}
+};
 
-function drawTarget(size) {
+const drawTarget = (size) => {
   // Target Size
   target.style.width = `${size}px`;
   target.style.height = `${size}px`;
@@ -130,9 +130,9 @@ function drawTarget(size) {
   centerTarget();
 
   target.addEventListener('mousedown', doGameMode);
-}
+};
 
-function doGameMode() {
+const doGameMode = () => {
   // invoke gamemode
   switch (selectedGameMode) {
     case 'trainAim':
@@ -142,7 +142,7 @@ function doGameMode() {
       trainShortFlicks();
       break;
   }
-}
+};
 
 // Track hits, misses, and shots taken
 gameSpace.addEventListener('mousedown', (e) => {
@@ -170,17 +170,17 @@ gameSpace.addEventListener('mousedown', (e) => {
   }
 });
 
-function updateHits() {
+const updateHits = () => {
   const hitsDisplay = document.querySelector('.hits');
   hitsDisplay.textContent = `Hits: ${Stats.hits}`;
-}
+};
 
-function updateMisses() {
+const updateMisses = () => {
   const missesDisplay = document.querySelector('.misses');
   missesDisplay.textContent = `Misses: ${Stats.misses}`;
-}
+};
 
-function updateAccuracy() {
+const updateAccuracy = () => {
   const accuracyDisplay = document.querySelector('.accuracy');
   let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
   // Percentage Based Text color
@@ -195,32 +195,32 @@ function updateAccuracy() {
     accuracyDisplay.style.color = 'hsl(100, 100%, 50%)';
   }
   accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
-}
+};
 
-function getRandomAxis(min, max) {
+const getRandomAxis = (min, max) => {
   return Math.random() * (max - min) + min;
-}
+};
 
-function randomizeTargetLocation(minY, maxY, minX, maxX) {
+const randomizeTargetLocation = (minY, maxY, minX, maxX) => {
   const randomY = getRandomAxis(minY, maxY);
   const randomX = getRandomAxis(minX, maxX);
 
   // Random Target Location
   target.style.top = `${randomY}px`;
   target.style.left = `${randomX}px`;
-}
+};
 
 // Gammode 1 *Default*
-function trainAim() {
+const trainAim = () => {
   // Viewport size minus Target size
   const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
   const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
   randomizeTargetLocation(75, maxY, 75, maxX);
-}
+};
 
 // Gamemode 2
 
-function trainShortFlicks() {
+const trainShortFlicks = () => {
   // Plus and Minus 40% of target
   const minY =
     target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
@@ -239,9 +239,9 @@ function trainShortFlicks() {
     randomizeTargetLocation(minY, maxY, minX, maxX);
     target.value = 'notCenter';
   }
-}
+};
 
-function newGame(size, gamemode) {
+const newGame = (size, gamemode) => {
   selectedGameMode = gamemode;
   target.value = 'center';
   drawTarget(size);
@@ -252,7 +252,7 @@ function newGame(size, gamemode) {
   updateMisses();
   updateAccuracy();
   updateRangeSliderText();
-}
+};
 
 window.onload = () => {
   newGame(rangeSlider.value, 'trainAim');
