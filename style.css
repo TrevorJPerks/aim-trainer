@@ -151,5 +151,5 @@ a {
 }
 
 .selected-gamemode {
-  border: 3px solid hsl(180, 100%, 50%);
+  border: 3px groove hsl(180, 100%, 50%);
 }
