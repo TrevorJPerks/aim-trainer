@@ -32,8 +32,8 @@ document.querySelector('.short-flicks').onclick = () => {
   newGame(rangeSlider.value, (selectedGameMode = 'trainShortFlicks'));
 };
 
-const playSound = (selector, volume) => {
-  const SFX = document.getElementById(selector);
+const playSound = (audioElementId, volume) => {
+  const SFX = document.getElementById(audioElementId);
   SFX.volume = volume;
   SFX.play();
 };
