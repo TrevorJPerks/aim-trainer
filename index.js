@@ -41,8 +41,20 @@ document.querySelector('.freetrain-img').onclick = (e) => {
 };
 
 document.querySelector('.shortflicks-img').onclick = (e) => {
-  newGame(rangeSlider.value, (selectedGameMode = 'ShortFlicks'));
+  newGame(rangeSlider.value, (selectedGameMode = 'shortFlicks'));
   document.querySelector('.current-gamemode').innerHTML = 'Short Flicks';
+  highlightSelectedGamemode(e);
+};
+
+document.querySelector('.mediumflicks-img').onclick = (e) => {
+  newGame(rangeSlider.value, (selectedGameMode = 'mediumFlicks'));
+  document.querySelector('.current-gamemode').innerHTML = 'Medium Flicks';
+  highlightSelectedGamemode(e);
+};
+
+document.querySelector('.flicks-img').onclick = (e) => {
+  newGame(rangeSlider.value, (selectedGameMode = 'flicks'));
+  document.querySelector('.current-gamemode').innerHTML = 'Flicks';
   highlightSelectedGamemode(e);
 };
 
@@ -168,8 +180,14 @@ const doGameMode = () => {
     case 'trainAim':
       trainAim();
       break;
-    case 'ShortFlicks':
-      ShortFlicks();
+    case 'shortFlicks':
+      shortFlicks();
+      break;
+    case 'mediumFlicks':
+      mediumFlicks();
+      break;
+    case 'flicks':
+      flicks();
       break;
   }
 };
@@ -251,7 +269,7 @@ const trainAim = () => {
 };
 
 // Gamemode 2
-const ShortFlicks = () => {
+const shortFlicks = () => {
   // Plus and Minus 40% of target
   const minY =
     target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.2;
@@ -268,6 +286,41 @@ const ShortFlicks = () => {
     target.value = 'center';
   } else {
     randomizeTargetLocation(minY, maxY, minX, maxX);
+    target.value = 'notCenter';
+  }
+};
+
+// Gamemode 3
+const mediumFlicks = () => {
+  // Plus and Minus 40% of target
+  const minY =
+    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
+  const maxY =
+    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.4;
+
+  const minX =
+    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.4;
+  const maxX =
+    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
+
+  if (target.value == 'notCenter') {
+    centerTarget();
+    target.value = 'center';
+  } else {
+    randomizeTargetLocation(minY, maxY, minX, maxX);
+    target.value = 'notCenter';
+  }
+};
+
+// Gamemode 4
+const flicks = () => {
+  if (target.value == 'notCenter') {
+    centerTarget();
+    target.value = 'center';
+  } else {
+    const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
+    const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
+    randomizeTargetLocation(75, maxY, 75, maxX);
     target.value = 'notCenter';
   }
 };

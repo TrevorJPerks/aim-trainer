@@ -124,8 +124,7 @@ a {
   color: inherit;
 }
 
-.shortflicks-img,
-.freetrain-img {
+img {
   margin-top: 10px;
   width: 70px;
   height: auto;
