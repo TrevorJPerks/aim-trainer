@@ -59,6 +59,9 @@ const muteSound = (boolean) => {
 const instantModeToggle = () =>
   document.querySelector('.target').classList.toggle('animate-target');
 
+const backgroundToggle = () =>
+  document.querySelector('.game-container').classList.toggle('bg');
+
 // Option Toggles
 document.querySelector('.audio-toggle').onclick = () => {
   if (document.querySelector('.audio-toggle').checked) {
@@ -68,6 +71,10 @@ document.querySelector('.audio-toggle').onclick = () => {
 
 document.querySelector('.instantmode-toggle').onclick = () => {
   instantModeToggle();
+};
+
+document.querySelector('.background-toggle').onclick = () => {
+  backgroundToggle();
 };
 
 // Keybinds
@@ -94,6 +101,16 @@ window.onkeydown = (event) => {
     } else {
       document.querySelector('.instantmode-toggle').checked = false;
       instantModeToggle();
+    }
+  }
+  // Press B to toggle background image
+  if (event.keyCode == 66) {
+    if (document.querySelector('.background-toggle').checked == false) {
+      document.querySelector('.background-toggle').checked = true;
+      backgroundToggle();
+    } else {
+      document.querySelector('.background-toggle').checked = false;
+      backgroundToggle();
     }
   }
 };
