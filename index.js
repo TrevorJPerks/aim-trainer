@@ -41,7 +41,7 @@ document.querySelector('.freetrain-img').onclick = (e) => {
 };
 
 document.querySelector('.shortflicks-img').onclick = (e) => {
-  newGame(rangeSlider.value, (selectedGameMode = 'trainShortFlicks'));
+  newGame(rangeSlider.value, (selectedGameMode = 'ShortFlicks'));
   document.querySelector('.current-gamemode').innerHTML = 'Short Flicks';
   highlightSelectedGamemode(e);
 };
@@ -168,8 +168,8 @@ const doGameMode = () => {
     case 'trainAim':
       trainAim();
       break;
-    case 'trainShortFlicks':
-      trainShortFlicks();
+    case 'ShortFlicks':
+      ShortFlicks();
       break;
   }
 };
@@ -230,7 +230,7 @@ const updateAccuracy = () => {
 };
 
 const getRandomAxis = (min, max) => {
-  return Math.random() * (max - min) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 const randomizeTargetLocation = (minY, maxY, minX, maxX) => {
@@ -251,17 +251,17 @@ const trainAim = () => {
 };
 
 // Gamemode 2
-const trainShortFlicks = () => {
+const ShortFlicks = () => {
   // Plus and Minus 40% of target
   const minY =
-    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
+    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.2;
   const maxY =
-    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.4;
+    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.2;
 
   const minX =
-    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.4;
+    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.2;
   const maxX =
-    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
+    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.2;
 
   if (target.value == 'notCenter') {
     centerTarget();
