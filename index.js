@@ -96,11 +96,13 @@ function toggleMenu(menuSelector, buttonSelector) {
     menu.style.maxHeight = '0px';
     menuButton.style.opacity = '0.4';
     menuButton.style.width = '100px';
+    menuButton.style.borderBottom = '1px solid hsl(0, 0%, 0%';
   } else {
     menuButton.value = 'ON';
     menuButton.style.transitionDelay = '0s';
     menu.style.maxHeight = '500px';
     menuButton.style.opacity = '0.6';
+    menuButton.style.borderBottom = '1px solid hsl(180, 100%, 50%)';
     menuButton.style.width = menu.getBoundingClientRect().width + 'px';
   }
 }
