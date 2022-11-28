@@ -127,7 +127,7 @@ a {
 
 .shortflicks-img,
 .freetrain-img {
-  padding-top: 10px;
+  margin-top: 10px;
   width: 70px;
   height: auto;
 }
@@ -136,8 +136,20 @@ a {
   width: 120px;
 }
 
+.current-gamemode {
+  margin-block: 1rem;
+  position: fixed;
+  left: 50vw;
+  translate: -50%;
+  opacity: 0.3;
+}
+
 /* JS appended Classes */
 
 .animate-target {
   transition-duration: 0.1s;
+}
+
+.selected-gamemode {
+  border: 3px solid hsl(180, 100%, 50%);
 }

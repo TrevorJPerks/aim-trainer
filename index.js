@@ -23,13 +23,24 @@ rangeSlider.oninput = () => {
   updateRangeSliderText();
 };
 
+const showBorder = (e) => {
+  const gamemodeIcon = document.querySelectorAll('.gamemode-img');
+  gamemodeIcon.forEach((icon) => {
+    icon.classList.remove('selected-gamemode');
+  });
+  e.target.classList.add('selected-gamemode');
+};
 // Gamemode Selection
-document.querySelector('.free-train').onclick = () => {
+document.querySelector('.free-train').onclick = (e) => {
   newGame(rangeSlider.value, (selectedGameMode = 'trainAim'));
+  document.querySelector('.current-gamemode').innerHTML = 'Train Aim';
+  showBorder(e);
 };
 
-document.querySelector('.short-flicks').onclick = () => {
+document.querySelector('.short-flicks').onclick = (e) => {
   newGame(rangeSlider.value, (selectedGameMode = 'trainShortFlicks'));
+  document.querySelector('.current-gamemode').innerHTML = 'Short Flicks';
+  showBorder(e);
 };
 
 const playSound = (audioElementId, volume) => {
