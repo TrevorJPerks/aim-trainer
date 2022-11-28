@@ -55,6 +55,15 @@ main {
   color: hsl(291, 69%, 75%);
 }
 
+.keybinds {
+  position: fixed;
+  z-index: 0;
+
+  left: 0.5rem;
+  bottom: 0.5rem;
+  color: hsla(180, 100%, 50%, 0.2);
+}
+
 .menu-wrapper {
   display: flex;
   flex-direction: column;
@@ -79,7 +88,7 @@ main {
 }
 
 #gamemode-menu {
-  right: 30vw;
+  right: 5vw;
 }
 
 #option-menu {
