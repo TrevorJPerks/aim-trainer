@@ -90,20 +90,20 @@ window.onkeydown = (event) => {
 function toggleMenu(menuSelector, buttonSelector) {
   const menu = document.getElementById(menuSelector);
   const menuButton = document.getElementById(buttonSelector);
-  if (menuButton.value == 'ON') {
-    menuButton.value = 'OFF';
-    menuButton.style.transitionDelay = '0.3s';
-    menu.style.maxHeight = '0px';
-    menuButton.style.opacity = '0.4';
-    menuButton.style.width = '100px';
-    menuButton.style.borderBottom = '1px solid hsl(0, 0%, 0%';
-  } else {
+  if (menuButton.value == 'OFF') {
     menuButton.value = 'ON';
     menuButton.style.transitionDelay = '0s';
     menu.style.maxHeight = '500px';
     menuButton.style.opacity = '0.6';
     menuButton.style.borderBottom = '1px solid hsl(180, 100%, 50%)';
     menuButton.style.width = menu.getBoundingClientRect().width + 'px';
+  } else {
+    menuButton.value = 'OFF';
+    menuButton.style.transitionDelay = '0.3s';
+    menu.style.maxHeight = '0px';
+    menuButton.style.opacity = '0.4';
+    menuButton.style.width = '100px';
+    menuButton.style.borderBottom = '1px solid hsl(0, 0%, 0%';
   }
 }
 
