@@ -133,7 +133,6 @@ const drawTarget = (size) => {
 };
 
 const doGameMode = () => {
-  // invoke gamemode
   switch (selectedGameMode) {
     case 'trainAim':
       trainAim();
@@ -221,7 +220,6 @@ const trainAim = () => {
 };
 
 // Gamemode 2
-
 const trainShortFlicks = () => {
   // Plus and Minus 40% of target
   const minY =
