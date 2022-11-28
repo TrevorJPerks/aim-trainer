@@ -189,9 +189,11 @@ const updateAccuracy = () => {
     accuracyDisplay.style.color = 'hsl(180, 100%, 50%)';
   } else if (accuracy <= 33) {
     accuracyDisplay.style.color = 'hsl(0, 100%, 50%)';
-  } else if (accuracy > 33 && accuracy <= 75) {
+  } else if (accuracy > 33 && accuracy <= 67) {
     accuracyDisplay.style.color = 'hsl(30, 100%, 50%)';
-  } else if (accuracy > 76) {
+  } else if (accuracy >= 67 && accuracy <= 90) {
+    accuracyDisplay.style.color = 'hsl(50, 100%, 50%)';
+  } else if (accuracy > 90) {
     accuracyDisplay.style.color = 'hsl(100, 100%, 50%)';
   }
   accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
