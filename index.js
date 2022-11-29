@@ -35,25 +35,25 @@ const highlightSelectedGamemode = (e) => {
 
 // Gamemode Selection
 document.querySelector('.freetrain-img').onclick = (e) => {
-  newGame(rangeSlider.value, (selectedGameMode = 'trainAim'));
+  newGame(rangeSlider.value, trainAim);
   document.querySelector('.current-gamemode').innerHTML = 'Train Aim';
   highlightSelectedGamemode(e);
 };
 
 document.querySelector('.shortflicks-img').onclick = (e) => {
-  newGame(rangeSlider.value, (selectedGameMode = 'shortFlicks'));
+  newGame(rangeSlider.value, 'shortFlicks');
   document.querySelector('.current-gamemode').innerHTML = 'Short Flicks';
   highlightSelectedGamemode(e);
 };
 
 document.querySelector('.mediumflicks-img').onclick = (e) => {
-  newGame(rangeSlider.value, (selectedGameMode = 'mediumFlicks'));
+  newGame(rangeSlider.value, 'mediumFlicks');
   document.querySelector('.current-gamemode').innerHTML = 'Medium Flicks';
   highlightSelectedGamemode(e);
 };
 
 document.querySelector('.flicks-img').onclick = (e) => {
-  newGame(rangeSlider.value, (selectedGameMode = 'flicks'));
+  newGame(rangeSlider.value, 'flicks');
   document.querySelector('.current-gamemode').innerHTML = 'Flicks';
   highlightSelectedGamemode(e);
 };
