@@ -35,7 +35,7 @@ const highlightSelectedGamemode = (e) => {
 
 // Gamemode Selection
 document.querySelector('.freetrain-img').onclick = (e) => {
-  newGame(rangeSlider.value, trainAim);
+  newGame(rangeSlider.value, 'trainAim');
   document.querySelector('.current-gamemode').innerHTML = 'Train Aim';
   highlightSelectedGamemode(e);
 };
