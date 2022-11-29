@@ -270,7 +270,7 @@ const trainAim = () => {
 
 // Gamemode 2
 const shortFlicks = () => {
-  // Plus and Minus 40% of target
+  // Plus and Minus 20% of target
   const minY =
     target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.2;
   const maxY =
@@ -292,16 +292,16 @@ const shortFlicks = () => {
 
 // Gamemode 3
 const mediumFlicks = () => {
-  // Plus and Minus 40% of target
+  // Plus and Minus 50% of target
   const minY =
-    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.4;
+    target.getBoundingClientRect().y - target.getBoundingClientRect().y * 0.5;
   const maxY =
-    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.4;
+    target.getBoundingClientRect().y + target.getBoundingClientRect().y * 0.5;
 
   const minX =
-    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.4;
+    target.getBoundingClientRect().x - target.getBoundingClientRect().x * 0.5;
   const maxX =
-    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.4;
+    target.getBoundingClientRect().x + target.getBoundingClientRect().x * 0.5;
 
   if (target.value == 'notCenter') {
     centerTarget();
