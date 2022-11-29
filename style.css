@@ -55,13 +55,24 @@ main {
   color: hsl(291, 69%, 75%);
 }
 
+.current-gamemode {
+  margin-block: 1rem;
+  position: fixed;
+  left: 50vw;
+  translate: -50%;
+  opacity: 0.5;
+}
+
 .keybinds {
   position: fixed;
   z-index: 0;
-
   left: 0.5rem;
   bottom: 0.5rem;
-  color: hsla(180, 100%, 50%, 0.2);
+  opacity: 0.4;
+}
+
+.keybinds:hover {
+  opacity: 1;
 }
 
 .menu-wrapper {
@@ -79,6 +90,7 @@ main {
   background-color: hsla(0, 0%, 0%, 0.6);
   cursor: default;
   transition: 0.3s;
+  color: hsl(291, 69%, 75%);
 }
 
 #gamemode-menu,
@@ -141,14 +153,6 @@ img {
 
 .range-slider {
   width: 120px;
-}
-
-.current-gamemode {
-  margin-block: 1rem;
-  position: fixed;
-  left: 50vw;
-  translate: -50%;
-  opacity: 0.3;
 }
 
 /* JS Contolled Classes */
