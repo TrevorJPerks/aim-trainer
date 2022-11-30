@@ -1,7 +1,7 @@
 const gameSpace = document.querySelector('.game-container');
-const rangeSlider = document.querySelector('.range-slider');
+const rangeSlider = gameSpace.querySelector('.range-slider');
 
-const target = document.querySelector('.target');
+const target = gameSpace.querySelector('.target');
 
 let selectedGameMode = 'trainAim';
 
@@ -12,7 +12,7 @@ let Stats = {
 };
 
 const updateRangeSliderText = () =>
-  (document.querySelector('.slider-value').innerHTML =
+  (gameSpace.querySelector('.slider-value').innerHTML =
     rangeSlider.value + 'px');
 
 rangeSlider.onchange = () => {
@@ -24,7 +24,7 @@ rangeSlider.oninput = () => {
 };
 
 const highlightSelectedGamemode = (e) => {
-  const gamemodeIcon = document.querySelectorAll('.gamemode-img');
+  const gamemodeIcon = gameSpace.querySelectorAll('.gamemode-img');
   if (e.target.classList.contains('gamemode-img')) {
     gamemodeIcon.forEach((icon) => {
       icon.classList.remove('selected-gamemode');
@@ -34,27 +34,27 @@ const highlightSelectedGamemode = (e) => {
 };
 
 // Gamemode Selection
-document.querySelector('.freetrain-img').onclick = (e) => {
+gameSpace.querySelector('.freetrain-img').onclick = (e) => {
   newGame(rangeSlider.value, 'trainAim');
-  document.querySelector('.current-gamemode').innerHTML = 'Train Aim';
+  gameSpace.querySelector('.current-gamemode').innerHTML = 'Train Aim';
   highlightSelectedGamemode(e);
 };
 
-document.querySelector('.shortflicks-img').onclick = (e) => {
+gameSpace.querySelector('.shortflicks-img').onclick = (e) => {
   newGame(rangeSlider.value, 'shortFlicks');
-  document.querySelector('.current-gamemode').innerHTML = 'Short Flicks';
+  gameSpace.querySelector('.current-gamemode').innerHTML = 'Short Flicks';
   highlightSelectedGamemode(e);
 };
 
-document.querySelector('.mediumflicks-img').onclick = (e) => {
+gameSpace.querySelector('.mediumflicks-img').onclick = (e) => {
   newGame(rangeSlider.value, 'mediumFlicks');
-  document.querySelector('.current-gamemode').innerHTML = 'Medium Flicks';
+  gameSpace.querySelector('.current-gamemode').innerHTML = 'Medium Flicks';
   highlightSelectedGamemode(e);
 };
 
-document.querySelector('.flicks-img').onclick = (e) => {
+gameSpace.querySelector('.flicks-img').onclick = (e) => {
   newGame(rangeSlider.value, 'flicks');
-  document.querySelector('.current-gamemode').innerHTML = 'Flicks';
+  gameSpace.querySelector('.current-gamemode').innerHTML = 'Flicks';
   highlightSelectedGamemode(e);
 };
 
@@ -71,23 +71,23 @@ const muteSound = (boolean) => {
 };
 
 const instantModeToggle = () =>
-  document.querySelector('.target').classList.toggle('animate-target');
+  gameSpace.querySelector('.target').classList.toggle('animate-target');
 
 const backgroundToggle = () =>
   document.querySelector('.game-container').classList.toggle('bg');
 
 // Option Toggles
-document.querySelector('.audio-toggle').onclick = () => {
-  if (document.querySelector('.audio-toggle').checked) {
+gameSpace.querySelector('.audio-toggle').onclick = () => {
+  if (gameSpace.querySelector('.audio-toggle').checked) {
     muteSound(true);
   } else muteSound(false);
 };
 
-document.querySelector('.instantmode-toggle').onclick = () => {
+gameSpace.querySelector('.instantmode-toggle').onclick = () => {
   instantModeToggle();
 };
 
-document.querySelector('.background-toggle').onclick = () => {
+gameSpace.querySelector('.background-toggle').onclick = () => {
   backgroundToggle();
 };
 
@@ -95,11 +95,11 @@ document.querySelector('.background-toggle').onclick = () => {
 window.onkeydown = (event) => {
   // Press M to mute/unmute
   if (event.keyCode == 77) {
-    if (document.querySelector('.audio-toggle').checked == false) {
-      document.querySelector('.audio-toggle').checked = true;
+    if (gameSpace.querySelector('.audio-toggle').checked == false) {
+      gameSpace.querySelector('.audio-toggle').checked = true;
       muteSound(true);
     } else {
-      document.querySelector('.audio-toggle').checked = false;
+      gameSpace.querySelector('.audio-toggle').checked = false;
       muteSound(false);
     }
   }
@@ -109,21 +109,21 @@ window.onkeydown = (event) => {
   }
   // Press I to toggle instantMode
   if (event.keyCode == 73) {
-    if (document.querySelector('.instantmode-toggle').checked == false) {
-      document.querySelector('.instantmode-toggle').checked = true;
+    if (gameSpace.querySelector('.instantmode-toggle').checked == false) {
+      gameSpace.querySelector('.instantmode-toggle').checked = true;
       instantModeToggle();
     } else {
-      document.querySelector('.instantmode-toggle').checked = false;
+      gameSpace.querySelector('.instantmode-toggle').checked = false;
       instantModeToggle();
     }
   }
   // Press B to toggle background image
   if (event.keyCode == 66) {
-    if (document.querySelector('.background-toggle').checked == false) {
-      document.querySelector('.background-toggle').checked = true;
+    if (gameSpace.querySelector('.background-toggle').checked == false) {
+      gameSpace.querySelector('.background-toggle').checked = true;
       backgroundToggle();
     } else {
-      document.querySelector('.background-toggle').checked = false;
+      gameSpace.querySelector('.background-toggle').checked = false;
       backgroundToggle();
     }
   }
@@ -219,17 +219,17 @@ gameSpace.addEventListener('mousedown', (e) => {
 });
 
 const updateHits = () => {
-  const hitsDisplay = document.querySelector('.hits');
+  const hitsDisplay = gameSpace.querySelector('.hits');
   hitsDisplay.textContent = `Hits: ${Stats.hits}`;
 };
 
 const updateMisses = () => {
-  const missesDisplay = document.querySelector('.misses');
+  const missesDisplay = gameSpace.querySelector('.misses');
   missesDisplay.textContent = `Misses: ${Stats.misses}`;
 };
 
 const updateAccuracy = () => {
-  const accuracyDisplay = document.querySelector('.accuracy');
+  const accuracyDisplay = gameSpace.querySelector('.accuracy');
   let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
   // Percentage Based Text color
   if (Stats.shots === 0) {
@@ -340,8 +340,8 @@ const newGame = (size, gamemode) => {
 
 window.onload = () => {
   newGame(rangeSlider.value, 'trainAim');
-  document.querySelector('.audio-toggle').checked = false;
-  document.querySelector('.instantmode-toggle').checked = false;
+  gameSpace.querySelector('.audio-toggle').checked = false;
+  gameSpace.querySelector('.instantmode-toggle').checked = false;
   toggleMenu('gmMenu', 'gamemode-tab');
   toggleMenu('optionMenu', 'option-tab');
 };
