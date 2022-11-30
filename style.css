@@ -93,18 +93,13 @@ main {
   color: hsl(291, 69%, 75%);
 }
 
-#gamemode-menu,
-#option-menu {
+.menu-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
   position: fixed;
   bottom: 0;
-}
-
-#gamemode-menu {
-  right: 10vw;
-}
-
-#option-menu {
-  left: 10vw;
+  width: 100vw;
 }
 
 .menu .gamemodes {

@@ -45,88 +45,90 @@
         <p>B = Hide Background</p>
         <p>I = Instant mode</p>
       </div>
-      <!-- Gamemode Menu -->
-      <div id="gamemode-menu" class="menu-wrapper">
-        <button
-          id="gamemode-tab"
-          class="toggle-menu gamemode-button"
-          type="button"
-          value="ON"
-        >
-          Gamemode
-        </button>
-        <div id="gmMenu" class="menu">
-          <div class="gamemodes">
-            <a href="#" class="free-train">
-              Train Aim
-              <img
-                src="images/trainaim.jpg"
-                alt=""
-                class="freetrain-img gamemode-img selected-gamemode"
+      <!-- Menu Container -->
+      <div class="menu-container">
+        <!-- Options Menu -->
+        <div id="option-menu" class="menu-wrapper">
+          <button id="option-tab" class="toggle-menu" type="button" value="ON">
+            Options
+          </button>
+          <div id="optionMenu" class="menu">
+            <div class="options">
+              <label
+                >Target Size:
+                <p class="slider-value">50</p></label
+              >
+              <input
+                class="range-slider"
+                type="range"
+                name="slider"
+                id="rangeSlider"
+                min="25"
+                max="150"
+                step="25"
+                value="75"
               />
-            </a>
-
-            <a href="#" class="short-flicks">
-              Short Flicks
-              <img
-                src="images/shortflicks.jpg"
-                alt=""
-                class="shortflicks-img gamemode-img"
+              <label>Mute Audio</label>
+              <input type="checkbox" class="audio-toggle" name="Toggle" />
+              <label>Instant Mode</label>
+              <input type="checkbox" class="instantmode-toggle" name="Toggle" />
+              <label>Background</label>
+              <input
+                type="checkbox"
+                class="background-toggle"
+                name="Toggle"
+                checked
               />
-            </a>
-
-            <a href="#" class="medium-flicks">
-              Medium Flicks
-              <img
-                src="images/trainaim.jpg"
-                alt=""
-                class="mediumflicks-img gamemode-img"
-              />
-            </a>
-            <a href="#" class="flicks">
-              Flicks
-              <img
-                src="images/trainaim.jpg"
-                alt=""
-                class="flicks-img gamemode-img"
-              />
-            </a>
+            </div>
           </div>
         </div>
-      </div>
+        <!-- Gamemode Menu -->
+        <div id="gamemode-menu" class="menu-wrapper">
+          <button
+            id="gamemode-tab"
+            class="toggle-menu gamemode-button"
+            type="button"
+            value="ON"
+          >
+            Gamemode
+          </button>
+          <div id="gmMenu" class="menu">
+            <div class="gamemodes">
+              <a href="#" class="free-train">
+                Train Aim
+                <img
+                  src="images/trainaim.jpg"
+                  alt=""
+                  class="freetrain-img gamemode-img selected-gamemode"
+                />
+              </a>
 
-      <!-- Options Menu -->
-      <div id="option-menu" class="menu-wrapper">
-        <button id="option-tab" class="toggle-menu" type="button" value="ON">
-          Options
-        </button>
-        <div id="optionMenu" class="menu">
-          <div class="options">
-            <label
-              >Target Size:
-              <p class="slider-value">50</p></label
-            >
-            <input
-              class="range-slider"
-              type="range"
-              name="slider"
-              id="rangeSlider"
-              min="25"
-              max="150"
-              step="25"
-              value="75"
-            />
-            <label>Mute Audio</label>
-            <input type="checkbox" class="audio-toggle" name="Toggle" />
-            <label>Instant Mode</label>
-            <input type="checkbox" class="instantmode-toggle" name="Toggle" />
-            <label>Background</label>
-            <input
-              type="checkbox"
-              class="background-toggle"
-              name="Toggle"
-              checked
-            />
+              <a href="#" class="short-flicks">
+                Short Flicks
+                <img
+                  src="images/shortflicks.jpg"
+                  alt=""
+                  class="shortflicks-img gamemode-img"
+                />
+              </a>
+
+              <a href="#" class="medium-flicks">
+                Medium Flicks
+                <img
+                  src="images/trainaim.jpg"
+                  alt=""
+                  class="mediumflicks-img gamemode-img"
+                />
+              </a>
+              <a href="#" class="flicks">
+                Flicks
+                <img
+                  src="images/trainaim.jpg"
+                  alt=""
+                  class="flicks-img gamemode-img"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
