@@ -23,6 +23,7 @@ main {
   align-items: flex-start;
   width: 100vw;
   height: 100vh;
+  min-height: -webkit-fill-available;
   color: hsl(180, 100%, 50%);
   background-color: hsl(0, 0%, 14%);
 }
@@ -128,7 +129,6 @@ button {
   background-color: hsl(0, 0%, 0%);
   opacity: 0.6;
   color: #fff;
-
   transition-duration: 0.3s;
 }
 
@@ -162,4 +162,21 @@ img {
 
 .selected-gamemode {
   border: 3px groove hsl(180, 100%, 50%);
+}
+
+/* Responsiveness */
+
+@media only screen and (max-width: 690px) {
+  .current-gamemode {
+    display: none;
+  }
+  .keybinds {
+    display: none;
+  }
+  #gamemode-menu {
+    display: none;
+  }
+  .menu-container {
+    justify-content: flex-start;
+  }
 }
