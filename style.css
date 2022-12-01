@@ -167,10 +167,8 @@ img {
 /* Responsiveness */
 
 @media only screen and (max-width: 689px) {
+  #gamemode-menu,
   .current-gamemode {
-    display: none;
-  }
-  #gamemode-menu {
     display: none;
   }
   .menu-container {
