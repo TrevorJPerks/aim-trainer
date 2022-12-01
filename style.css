@@ -166,6 +166,12 @@ img {
 
 /* Responsiveness */
 
+@media only screen and (max-width: 1024px) {
+  .keybinds {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 689px) {
   #gamemode-menu,
   .current-gamemode {
@@ -173,11 +179,5 @@ img {
   }
   .menu-container {
     justify-content: flex-start;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .keybinds {
-    display: none;
   }
 }
