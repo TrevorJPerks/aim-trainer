@@ -136,7 +136,7 @@ const toggleMenu = (menuElementId, buttonElementId) => {
   if (menuButton.value == 'OFF') {
     menuButton.value = 'ON';
     menuButton.style.transitionDelay = '0s';
-    menu.style.maxHeight = '500px';
+    menu.style.maxHeight = '100vh';
     menuButton.style.opacity = '0.6';
     menuButton.style.borderBottom = '1px solid hsl(180, 100%, 50%)';
     menuButton.style.boxShadow = ' 0px 7px 6px 0px hsla(180, 100%, 50%, 0.06)';
