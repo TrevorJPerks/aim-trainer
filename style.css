@@ -67,7 +67,7 @@ main {
   position: fixed;
   z-index: 0;
   left: 0.5rem;
-  bottom: 0.5rem;
+  bottom: 3rem;
   opacity: 0.4;
 }
 
