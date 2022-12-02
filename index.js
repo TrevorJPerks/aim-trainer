@@ -70,8 +70,7 @@ const muteSound = (boolean) => {
   });
 };
 
-const instantModeToggle = () =>
-  gameSpace.querySelector('.target').classList.toggle('animate-target');
+const instantModeToggle = () => target.classList.toggle('animate-target');
 
 const backgroundToggle = () =>
   document.querySelector('.game-container').classList.toggle('bg');
