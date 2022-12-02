@@ -27,6 +27,9 @@ main {
   color: hsl(180, 100%, 50%);
   background-color: hsl(0, 0%, 14%);
 }
+ul > * {
+  list-style: none;
+}
 
 .game-container {
   cursor: url(images/greendot.cur), auto;
@@ -53,7 +56,7 @@ main {
 }
 
 .stats h4 {
-  color: hsl(291, 69%, 75%);
+  color: hsl(291, 69%, 70%);
 }
 
 .current-gamemode {
@@ -67,6 +70,7 @@ main {
 .keybinds {
   position: fixed;
   z-index: 0;
+  text-align: left;
   left: 0.5rem;
   bottom: 3rem;
   opacity: 0.4;
@@ -91,7 +95,7 @@ main {
   background-color: hsla(0, 0%, 0%, 0.6);
   cursor: default;
   transition: 0.3s;
-  color: hsl(291, 69%, 75%);
+  color: hsl(291, 69%, 70%);
 }
 
 .menu-container {
