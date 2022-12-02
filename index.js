@@ -230,21 +230,18 @@ const updateMisses = () => {
 
 const updateAccuracy = () => {
   const accuracyDisplay = gameSpace.querySelector('.accuracy');
-  let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
   // Percentage Based Text color
   if (Stats.shots === 0) {
-    accuracy = 0;
-    accuracyDisplay.style.color = 'hsl(180, 100%, 50%)';
-  } else if (accuracy <= 33) {
-    accuracyDisplay.style.color = 'hsl(0, 100%, 50%)';
-  } else if (accuracy > 33 && accuracy <= 66) {
-    accuracyDisplay.style.color = 'hsl(30, 100%, 50%)';
-  } else if (accuracy >= 66 && accuracy <= 89) {
-    accuracyDisplay.style.color = 'hsl(50, 100%, 50%)';
-  } else if (accuracy >= 90) {
-    accuracyDisplay.style.color = 'hsl(100, 100%, 50%)';
+    let accuracy = '--';
+    accuracyDisplay.style.color = 'hsl(172, 100%, 70%)';
+    accuracyDisplay.textContent = `Accuracy: ${accuracy}`;
+    return;
   }
-  accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
+  if (Stats.shots > 0) {
+    let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
+    accuracyDisplay.style.color = `hsl(${accuracy}, 100%, 70%)`;
+    accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
+  }
 };
 
 const getRandomAxis = (min, max) => {
