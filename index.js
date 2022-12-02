@@ -72,6 +72,9 @@ const muteSound = (boolean) => {
 
 const instantModeToggle = () => target.classList.toggle('animate-target');
 
+const keybindTextToggle = () =>
+  document.querySelector('.keybinds').classList.toggle('hide-element');
+
 const backgroundToggle = () =>
   document.querySelector('.game-container').classList.toggle('bg');
 
@@ -125,6 +128,10 @@ window.onkeydown = (event) => {
       gameSpace.querySelector('.background-toggle').checked = false;
       backgroundToggle();
     }
+  }
+  // Press K to toggle Keybind text
+  if (event.keyCode == 75) {
+    keybindTextToggle();
   }
 };
 

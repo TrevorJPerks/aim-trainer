@@ -27,6 +27,7 @@ main {
   color: hsl(180, 100%, 50%);
   background-color: hsl(0, 0%, 14%);
 }
+
 ul > * {
   list-style: none;
 }
@@ -167,6 +168,9 @@ img {
   border: 3px groove hsl(180, 100%, 50%);
 }
 
+.hide-element {
+  display: none;
+}
 /* Responsiveness */
 
 @media only screen and (max-width: 1024px) {
