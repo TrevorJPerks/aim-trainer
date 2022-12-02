@@ -230,7 +230,6 @@ const updateMisses = () => {
 
 const updateAccuracy = () => {
   const accuracyDisplay = gameSpace.querySelector('.accuracy');
-  // Percentage Based Text color
   if (Stats.shots === 0) {
     let accuracy = '--';
     accuracyDisplay.style.color = 'hsl(172, 100%, 70%)';
@@ -239,6 +238,7 @@ const updateAccuracy = () => {
   }
   if (Stats.shots > 0) {
     let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
+    // Percentage Based Text color
     accuracyDisplay.style.color = `hsl(${accuracy}, 100%, 70%)`;
     accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
   }
