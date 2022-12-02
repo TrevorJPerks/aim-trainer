@@ -208,7 +208,8 @@ gameSpace.addEventListener('mousedown', (e) => {
   }
   if (
     e.target.classList.contains('game-container') ||
-    e.target.classList.contains('target')
+    e.target.classList.contains('target') ||
+    e.target.classList.contains('no-hit')
   ) {
     Stats.shots++;
     updateAccuracy();
