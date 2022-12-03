@@ -128,10 +128,8 @@ const playSound = (audioElementId, volume) => {
 const updateHits = () =>
   (gameSpace.querySelector('.hits').textContent = `Hits: ${Stats.hits}`);
 
-const updateMisses = () => {
-  const missesDisplay = gameSpace.querySelector('.misses');
-  missesDisplay.textContent = `Misses: ${Stats.misses}`;
-};
+const updateMisses = () =>
+  (gameSpace.querySelector('.misses').textContent = `Misses: ${Stats.misses}`);
 
 const updateAccuracy = () => {
   const accuracyDisplay = gameSpace.querySelector('.accuracy');
