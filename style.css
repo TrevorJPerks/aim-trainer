@@ -91,10 +91,6 @@ ul > * {
   opacity: 0.4;
 }
 
-.keybinds:hover {
-  opacity: 1;
-}
-
 /* MENUS */
 .menu-container {
   display: flex;
