@@ -190,7 +190,7 @@ button {
 }
 
 .hide-element {
-  display: none;
+  opacity: 0;
 }
 
 /* Menu Expanded State */
