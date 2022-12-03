@@ -154,7 +154,10 @@ const muteSound = (boolean) => {
   gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
 };
 
-const instantModeToggle = () => target.classList.toggle('animate-target');
+const instantModeToggle = () => {
+  target.classList.toggle('animate-target');
+  gameSpace.querySelector('.instantmode-icon').classList.toggle('hide-element');
+};
 
 const keybindTextToggle = () =>
   document.querySelector('.keybinds').classList.toggle('hide-element');
