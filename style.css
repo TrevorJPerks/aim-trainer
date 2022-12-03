@@ -151,6 +151,10 @@ button {
   gap: 0.4rem;
 }
 
+.gamemode-entry:hover {
+  cursor: pointer;
+}
+
 .gamemode-entry > img {
   width: 70px;
   height: auto;
