@@ -8,7 +8,6 @@ let selectedGameMode = 'trainAim';
 let Stats = {
   hits: 0,
   misses: 0,
-  shots: 0,
 };
 
 const updateRangeSliderText = () =>
@@ -198,30 +197,26 @@ const doGameMode = () => {
   }
 };
 
-// Track hits, misses, and shots taken
+// Track hits, misses, and update accuracy
 gameSpace.addEventListener('mousedown', (e) => {
   if (e.target.classList.contains('target')) {
     Stats.hits++;
     updateHits();
     // Play Hit SFX
     playSound('hitSFX', 0.1);
-  }
-  if (
-    e.target.classList.contains('game-container') ||
-    e.target.classList.contains('target') ||
-    e.target.classList.contains('no-hit')
-  ) {
-    Stats.shots++;
     updateAccuracy();
   }
   if (
-    !e.target.classList.contains('target') &&
-    e.target.classList.contains('game-container')
+    (!e.target.classList.contains('target') &&
+      e.target.classList.contains('game-container')) ||
+    (!e.target.classList.contains('target') &&
+      e.target.classList.contains('no-hit'))
   ) {
     Stats.misses++;
     updateMisses();
     // Play Miss SFX
     playSound('missSFX', 0.1);
+    updateAccuracy();
   }
 });
 
@@ -237,8 +232,9 @@ const updateMisses = () => {
 
 const updateAccuracy = () => {
   const accuracyDisplay = gameSpace.querySelector('.accuracy');
-  if (Stats.shots > 0) {
-    let accuracy = Math.round((Stats.hits / Stats.shots) * 100 * 10) / 10;
+  if (Stats.hits + Stats.misses > 0) {
+    let accuracy =
+      Math.round((Stats.hits / (Stats.hits + Stats.misses)) * 100 * 10) / 10;
     // Percentage Based Text color
     accuracyDisplay.style.color = `hsl(${accuracy}, 100%, 70%)`;
     accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
