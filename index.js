@@ -91,7 +91,6 @@ const newGame = (size, gamemode) => {
   drawTarget(size);
   Stats.hits = 0;
   Stats.misses = 0;
-  Stats.shots = 0;
   updateHits();
   updateMisses();
   updateAccuracy();
