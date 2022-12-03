@@ -94,8 +94,9 @@ ul > * {
 /* MENUS */
 .menu-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-end;
+  gap: 1rem;
   position: fixed;
   bottom: 0;
   height: auto;
@@ -122,15 +123,16 @@ ul > * {
   max-height: 0px;
 }
 
-.menu .gamemodes {
+.gamemodes {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 2rem;
-  padding: 1rem 2rem;
+  gap: 1rem;
+  padding: 1rem 3.562rem;
 }
 
-.menu .options {
+.options {
   display: flex;
   flex-direction: column;
   text-align: center;
