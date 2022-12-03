@@ -78,9 +78,7 @@ const flicks = () => {
     centerTarget();
     target.value = 'center';
   } else {
-    const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
-    const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
-    randomizeTargetLocation(75, maxY, 75, maxX);
+    trainAim();
     target.value = 'notCenter';
   }
 };
