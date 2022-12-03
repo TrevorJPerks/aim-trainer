@@ -211,13 +211,3 @@ button {
     display: none;
   }
 }
-
-@media only screen and (max-width: 440px) {
-  #gamemode-menu,
-  .current-gamemode {
-    display: none;
-  }
-  .menu-container {
-    justify-content: flex-start;
-  }
-}
