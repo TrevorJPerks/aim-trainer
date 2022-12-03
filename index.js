@@ -69,7 +69,11 @@ const backgroundToggle = () =>
 gameSpace.querySelector('.audio-toggle').onclick = () => {
   if (gameSpace.querySelector('.audio-toggle').checked) {
     muteSound(true);
-  } else muteSound(false);
+    gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
+    return;
+  }
+  muteSound(false);
+  gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
 };
 
 gameSpace.querySelector('.instantmode-toggle').onclick = () => {
@@ -87,9 +91,11 @@ window.onkeydown = (event) => {
     if (gameSpace.querySelector('.audio-toggle').checked == false) {
       gameSpace.querySelector('.audio-toggle').checked = true;
       muteSound(true);
+      gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
     } else {
       gameSpace.querySelector('.audio-toggle').checked = false;
       muteSound(false);
+      gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
     }
   }
   // Press R to reset game

@@ -60,6 +60,10 @@ ul > * {
   color: hsl(291, 69%, 70%);
 }
 
+.mute-icon {
+  margin: 0.5rem;
+}
+
 .current-gamemode {
   margin-block: 1rem;
   position: fixed;
@@ -165,7 +169,7 @@ img {
 }
 
 .selected-gamemode {
-  border: 3px groove hsl(180, 100%, 50%);
+  border: 3px groove hsl(180, 100%, 70%);
 }
 
 .hide-element {
