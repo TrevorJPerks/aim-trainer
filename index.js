@@ -225,19 +225,12 @@ const toggleMenu = (menuElementId, buttonElementId) => {
   const menuButton = document.getElementById(buttonElementId);
   if (menuButton.value == 'OFF') {
     menuButton.value = 'ON';
-    menuButton.style.transitionDelay = '0s';
-    menu.style.maxHeight = '100vh';
-    menuButton.style.opacity = '0.6';
-    menuButton.style.borderBottom = '1px solid hsl(180, 100%, 50%)';
-    menuButton.style.boxShadow = ' 0px 7px 6px 0px hsla(180, 100%, 50%, 0.06)';
-    menuButton.style.width = menu.getBoundingClientRect().width + 'px';
+    menu.classList.toggle('menu-expand');
+    menuButton.classList.toggle('button-on');
   } else {
     menuButton.value = 'OFF';
-    menuButton.style.transitionDelay = '0.3s';
-    menu.style.maxHeight = '0px';
-    menuButton.style.opacity = '0.4';
-    menuButton.style.width = '100px';
-    menuButton.style.borderBottom = '1px solid hsl(0, 0%, 0%';
+    menu.classList.toggle('menu-expand');
+    menuButton.classList.toggle('button-on');
   }
 };
 
@@ -275,6 +268,4 @@ gameSpace.querySelector('.flicks-img').onclick = (e) => {
 // Initialization
 window.onload = () => {
   newGame(rangeSlider.value, 'trainAim');
-  toggleMenu('gmMenu', 'gamemode-tab');
-  toggleMenu('optionMenu', 'option-tab');
 };
