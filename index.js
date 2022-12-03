@@ -125,10 +125,8 @@ const playSound = (audioElementId, volume) => {
   SFX.play();
 };
 
-const updateHits = () => {
-  const hitsDisplay = gameSpace.querySelector('.hits');
-  hitsDisplay.textContent = `Hits: ${Stats.hits}`;
-};
+const updateHits = () =>
+  (gameSpace.querySelector('.hits').textContent = `Hits: ${Stats.hits}`);
 
 const updateMisses = () => {
   const missesDisplay = gameSpace.querySelector('.misses');
