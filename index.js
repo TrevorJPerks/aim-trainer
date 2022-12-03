@@ -105,10 +105,7 @@ gameSpace.addEventListener('mousedown', (e) => {
     // Play Hit SFX
     playSound('hitSFX', 0.1);
   }
-  if (
-    !e.target.classList.contains('target') &&
-    e.target.classList.contains('hit-scan')
-  ) {
+  if (e.target.classList.contains('hit-scan')) {
     Stats.misses++;
     updateMisses();
     // Play Miss SFX
