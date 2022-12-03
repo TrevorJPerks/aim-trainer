@@ -42,7 +42,7 @@ const drawTarget = (size) => {
 const doGameMode = () => {
   switch (selectedGameMode) {
     case 'trainAim':
-      trainAim();
+      moveTargetRandomly();
       break;
     case 'flicks':
       flicks();
@@ -65,7 +65,7 @@ const randomizeTargetLocation = (minY, maxY, minX, maxX) => {
 };
 
 // Gammode 1 *Default*
-const trainAim = () => {
+const moveTargetRandomly = () => {
   // Viewport size minus Target size
   const maxX = gameSpace.getBoundingClientRect().width - rangeSlider.value;
   const maxY = gameSpace.getBoundingClientRect().height - rangeSlider.value;
@@ -78,7 +78,7 @@ const flicks = () => {
     centerTarget();
     target.value = 'center';
   } else {
-    trainAim();
+    moveTargetRandomly();
     target.value = 'notCenter';
   }
 };
