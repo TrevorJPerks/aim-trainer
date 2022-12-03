@@ -171,6 +171,7 @@ img {
 .hide-element {
   display: none;
 }
+
 /* Responsiveness */
 
 @media only screen and (max-width: 1024px) {
@@ -179,7 +180,7 @@ img {
   }
 }
 
-@media only screen and (max-width: 689px) {
+@media only screen and (max-width: 440px) {
   #gamemode-menu,
   .current-gamemode {
     display: none;
