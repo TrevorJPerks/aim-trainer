@@ -278,8 +278,6 @@ gameSpace.querySelector('.flicks-img').onclick = (e) => {
 // Initialization
 window.onload = () => {
   newGame(rangeSlider.value, 'trainAim');
-  gameSpace.querySelector('.audio-toggle').checked = false;
-  gameSpace.querySelector('.instantmode-toggle').checked = false;
   toggleMenu('gmMenu', 'gamemode-tab');
   toggleMenu('optionMenu', 'option-tab');
 };
