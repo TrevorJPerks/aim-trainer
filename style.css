@@ -24,6 +24,8 @@ main {
   min-height: -webkit-fill-available;
   color: hsl(172, 100%, 70%);
   background-color: hsl(0, 0%, 15%);
+  position: fixed;
+  z-index: -999;
 }
 
 ul > * {
@@ -36,15 +38,22 @@ ul > * {
 
 .target {
   position: absolute;
-  z-index: 999;
+  z-index: 1;
   border-radius: 100%;
   box-shadow: 4px 4px 9px -2px hsla(0, 0%, 0%, 0.6);
+}
+
+.hit-scan {
+  position: fixed;
+  z-index: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 /* UI */
 .stats {
   position: fixed;
-  z-index: 0;
+  z-index: -1;
   margin: 20px;
   width: 150px;
   text-align: center;
@@ -67,6 +76,7 @@ ul > * {
 .current-gamemode {
   margin-block: 1rem;
   position: fixed;
+  z-index: -1;
   left: 50vw;
   translate: -50%;
   opacity: 0.5;
@@ -74,7 +84,7 @@ ul > * {
 
 .keybinds {
   position: fixed;
-  z-index: 0;
+  z-index: -1;
   text-align: left;
   left: 1rem;
   bottom: 1rem;
