@@ -1,3 +1,7 @@
+:root {
+  --below-hit-scan: -1;
+  --above-hit-scan: 1;
+}
 * {
   margin: 0;
   padding: 0;
@@ -17,35 +21,31 @@ body {
   font-family: 'Chakra Petch', sans-serif;
 }
 
-main {
+.game-container {
+  position: fixed;
+  z-index: var(--below-hit-scan);
   display: flex;
   width: 100vw;
   height: 100vh;
   min-height: -webkit-fill-available;
   color: hsl(172, 100%, 70%);
   background-color: hsl(0, 0%, 15%);
-  position: fixed;
-  z-index: -999;
+  cursor: url(images/greendot.cur), auto;
 }
 
 ul > * {
   list-style: none;
 }
 
-.game-container {
-  cursor: url(images/greendot.cur), auto;
-}
-
 .target {
   position: absolute;
-  z-index: 1;
+  z-index: var(--above-hit-scan);
   border-radius: 100%;
   box-shadow: 4px 4px 9px -2px hsla(0, 0%, 0%, 0.6);
 }
 
 .hit-scan {
   position: fixed;
-  z-index: 0;
   height: 100vh;
   width: 100vw;
 }
@@ -53,7 +53,7 @@ ul > * {
 /* UI */
 .stats {
   position: fixed;
-  z-index: -1;
+  z-index: var(--below-hit-scan);
   margin: 20px;
   width: 150px;
   text-align: center;
@@ -76,7 +76,7 @@ ul > * {
 .current-gamemode {
   margin-block: 1rem;
   position: fixed;
-  z-index: -1;
+  z-index: var(--below-hit-scan);
   left: 50vw;
   translate: -50%;
   opacity: 0.5;
@@ -84,7 +84,7 @@ ul > * {
 
 .keybinds {
   position: fixed;
-  z-index: -1;
+  z-index: var(--below-hit-scan);
   text-align: left;
   left: 1rem;
   bottom: 1rem;
@@ -150,10 +150,10 @@ button {
   background-color: hsl(0, 0%, 0%);
   color: #fff;
   /* Default to Off*/
-  transition-duration: 0.3s;
   transition-delay: 0.5s;
+  transition-duration: 0.3s;
   opacity: 0.4;
-  width: 100px;
+  width: 100%;
   border-bottom: 1px solid hsl(0, 0%, 0%);
 }
 
@@ -204,7 +204,6 @@ button {
   opacity: 0.6;
   border-bottom: 1px solid hsl(180, 100%, 50%);
   box-shadow: 0px 7px 6px 0px hsla(180, 100%, 50%, 0.06);
-  width: 100%;
 }
 
 /* Responsiveness */
