@@ -39,18 +39,6 @@ gameSpace.querySelector('.freetrain-img').onclick = (e) => {
   highlightSelectedGamemode(e);
 };
 
-gameSpace.querySelector('.shortflicks-img').onclick = (e) => {
-  newGame(rangeSlider.value, 'shortFlicks');
-  gameSpace.querySelector('.current-gamemode').innerHTML = 'Short Flicks';
-  highlightSelectedGamemode(e);
-};
-
-gameSpace.querySelector('.mediumflicks-img').onclick = (e) => {
-  newGame(rangeSlider.value, 'mediumFlicks');
-  gameSpace.querySelector('.current-gamemode').innerHTML = 'Medium Flicks';
-  highlightSelectedGamemode(e);
-};
-
 gameSpace.querySelector('.flicks-img').onclick = (e) => {
   newGame(rangeSlider.value, 'flicks');
   gameSpace.querySelector('.current-gamemode').innerHTML = 'Flicks';
