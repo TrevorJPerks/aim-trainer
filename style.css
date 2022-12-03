@@ -208,12 +208,12 @@ ul > * {
 .button-on {
   transition-delay: 0.05s;
   opacity: 0.6;
-  border-bottom: 1px solid hsl(180, 100%, 50%);
-  box-shadow: 0px 7px 6px 0px hsla(180, 100%, 50%, 0.15);
+  border-bottom: 1px solid hsl(180, 100%, 70%);
+  box-shadow: 0px 7px 6px 0px hsla(180, 100%, 70%, 0.15);
 }
 
 .button-on:hover {
-  box-shadow: 0px 7px 6px 0px hsla(180, 100%, 50%, 0.3);
+  box-shadow: 0px 7px 6px 0px hsla(180, 100%, 70%, 0.3);
 }
 
 /* Responsiveness */
