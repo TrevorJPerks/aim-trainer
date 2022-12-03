@@ -204,7 +204,6 @@ gameSpace.addEventListener('mousedown', (e) => {
     updateHits();
     // Play Hit SFX
     playSound('hitSFX', 0.1);
-    updateAccuracy();
   }
   if (
     (!e.target.classList.contains('target') &&
@@ -216,8 +215,8 @@ gameSpace.addEventListener('mousedown', (e) => {
     updateMisses();
     // Play Miss SFX
     playSound('missSFX', 0.1);
-    updateAccuracy();
   }
+  updateAccuracy();
 });
 
 const updateHits = () => {
