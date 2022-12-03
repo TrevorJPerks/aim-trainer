@@ -151,6 +151,7 @@ const muteSound = (boolean) => {
   document.querySelectorAll('audio').forEach((audio) => {
     audio.muted = boolean;
   });
+  gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
 };
 
 const instantModeToggle = () => target.classList.toggle('animate-target');
@@ -163,11 +164,9 @@ const backgroundToggle = () => gameSpace.classList.toggle('bg');
 gameSpace.querySelector('.audio-toggle').onclick = () => {
   if (gameSpace.querySelector('.audio-toggle').checked) {
     muteSound(true);
-    gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
     return;
   }
   muteSound(false);
-  gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
 };
 
 gameSpace.querySelector('.instantmode-toggle').onclick = () => {
@@ -185,11 +184,9 @@ window.onkeydown = (event) => {
     if (gameSpace.querySelector('.audio-toggle').checked == false) {
       gameSpace.querySelector('.audio-toggle').checked = true;
       muteSound(true);
-      gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
     } else {
       gameSpace.querySelector('.audio-toggle').checked = false;
       muteSound(false);
-      gameSpace.querySelector('.mute-icon').classList.toggle('hide-element');
     }
   }
   // Press R to reset game
