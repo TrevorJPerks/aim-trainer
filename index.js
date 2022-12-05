@@ -51,13 +51,13 @@ const doGameMode = () => {
 };
 
 // Random Coord Gen
-const getRandomAxis = (min, max) => {
+const getRandomNumberBetween = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 const randomizeTargetLocation = (minY, maxY, minX, maxX) => {
-  const randomY = getRandomAxis(minY, maxY);
-  const randomX = getRandomAxis(minX, maxX);
+  const randomY = getRandomNumberBetween(minY, maxY);
+  const randomX = getRandomNumberBetween(minX, maxX);
 
   // Random Target Location
   target.style.top = `${randomY}px`;
