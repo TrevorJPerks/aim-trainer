@@ -124,23 +124,16 @@ ul > * {
   max-height: 0px;
 }
 
-.gamemodes {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 3.562rem;
-}
-
+.gamemodes,
 .options {
   display: flex;
   flex-direction: column;
-  text-align: center;
   justify-content: space-around;
   align-items: center;
+  text-align: center;
   gap: 1rem;
   padding: 1rem 2rem;
+  width: 184px;
 }
 
 /* Menu button */
