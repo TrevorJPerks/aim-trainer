@@ -95,9 +95,8 @@ ul > * {
 /* MENUS */
 .menu-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: flex-end;
-  gap: 1rem;
   position: fixed;
   bottom: 0;
   height: auto;
