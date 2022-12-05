@@ -215,3 +215,12 @@ ul > * {
     display: none;
   }
 }
+
+@media only screen and (max-width: 396px) {
+  #gamemode-menu {
+    display: none;
+  }
+  .current-gamemode {
+    display: none;
+  }
+}
