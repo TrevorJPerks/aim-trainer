@@ -47,6 +47,9 @@ const doGameMode = () => {
     case 'flicks':
       flicks();
       break;
+    case 'randomRange':
+      randomRange();
+      break;
   }
 };
 
@@ -81,6 +84,24 @@ const flicks = () => {
     moveTargetRandomXY();
     target.value = 'notCenter';
   }
+};
+
+// Gamemode 3
+const randomRange = () => {
+  randomTargetSize();
+  const y = gameSpace.getBoundingClientRect().height / 2;
+  randomizeTargetLocation(
+    y,
+    y,
+    75,
+    gameSpace.getBoundingClientRect().width - rangeSlider.value
+  );
+};
+
+const randomTargetSize = () => {
+  const size = getRandomNumberBetween(25, 150);
+  target.style.width = `${size}px`;
+  target.style.height = `${size}px`;
 };
 
 const newGame = (size, gamemode) => {
@@ -258,6 +279,12 @@ gameSpace.querySelector('.freetrain-img').onclick = (e) => {
 gameSpace.querySelector('.flicks-img').onclick = (e) => {
   newGame(rangeSlider.value, 'flicks');
   gameSpace.querySelector('.current-gamemode').innerHTML = 'Flicks';
+  highlightSelectedGamemode(e);
+};
+
+gameSpace.querySelector('.randomrange-img').onclick = (e) => {
+  newGame(rangeSlider.value, 'randomRange');
+  gameSpace.querySelector('.current-gamemode').innerHTML = 'Random Range';
   highlightSelectedGamemode(e);
 };
 
